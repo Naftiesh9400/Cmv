@@ -39,21 +39,21 @@ const Hero: React.FC = () => {
 
   return (
     <section
-      className="pt-24 pb-12 md:py-12 overflow-hidden min-h-[80vh] flex items-center"
+      className="py-20 md:py-32 overflow-hidden min-h-[85vh] flex items-center"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="container grid md:grid-cols-2 gap-12 items-center">
+      <div className="container grid md:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="z-20 pt-10 md:pt-0"
+          className="z-20"
         >
           <motion.h1
-            className="text-5xl lg:text-7xl font-bold font-outfit leading-[1.1] mb-8 text-navy"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-5xl sm:text-6xl lg:text-8xl font-bold font-outfit leading-[1.05] mb-10 text-navy"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
@@ -63,31 +63,31 @@ const Hero: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="text-text-muted text-lg md:text-xl mb-10 max-w-lg leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-text-muted text-xl md:text-2xl mb-12 max-w-xl leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Strategic technology advice to help plan your future growth.
+            Strategic technology advice to help plan your future growth and modernize your enterprise.
           </motion.p>
 
           <motion.div
-            style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', maxWidth: '400px' }}
-            initial={{ opacity: 0, y: 20 }}
+            className="flex flex-row items-center justify-start gap-4 sm:gap-6 md:gap-8"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
             <Link 
               to="/contact" 
-              className="btn btn-primary shadow-lg group" 
-              style={{ flex: '1 1 170px', justifyContent: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+              className="btn btn-primary shadow-lg group whitespace-nowrap !px-5 sm:!px-9" 
+              style={{ textDecoration: 'none' }}
             >
               Get Started <span className="ml-2 group-hover:translate-x-1 transition-transform"></span>
             </Link>
             <Link 
               to="/about" 
-              className="btn btn-outline" 
-              style={{ flex: '1 1 160px', justifyContent: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+              className="btn btn-outline whitespace-nowrap !px-5 sm:!px-9" 
+              style={{ textDecoration: 'none' }}
             >
               Learn More
             </Link>
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="relative w-full hidden md:flex justify-center md:justify-end items-center hero-image-container"
+          className="relative w-full hidden md:flex justify-center md:justify-end items-center hero-image-wrapper"
           initial={{ opacity: 0, scale: 0.95, x: 50 }}
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -132,8 +132,13 @@ const Hero: React.FC = () => {
 
       <style>{`
         @media (max-width: 767px) {
-          .hero-image-container {
+          .hero-image-wrapper {
             display: none !important;
+          }
+        }
+        @media (min-width: 768px) {
+          .hero-image-wrapper {
+            display: flex !important;
           }
         }
       `}</style>

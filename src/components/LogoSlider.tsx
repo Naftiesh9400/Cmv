@@ -45,36 +45,37 @@ const LogoSlider = () => {
     <div style={{ padding: '0', background: '#f8f9fa', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', overflow: 'hidden' }}>
       
       {/* Row 1 */}
-      <div style={{ position: 'relative', height: '120px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #eee' }}>
+      <div className="logo-slider-row" style={{ position: 'relative', height: '120px', display: 'flex', alignItems: 'center', borderBottom: '1px solid #eee' }}>
         <motion.div
           animate={{ x: [0, -1035] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
           style={{ display: 'flex', width: 'max-content' }}
         >
           {[...row1, ...row1, ...row1].map((brand, i) => (
-            <div key={i} style={{ 
+            <div key={i} className="logo-slider-item" style={{ 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
               width: '200px', 
               height: '118px', 
               borderRight: '1px solid #eee',
-              padding: '0 2rem',
+              padding: '0 2.5rem',
               background: '#fff' 
             }}>
               <img 
                 src={brand.logo} 
                 alt={brand.name} 
+                className="logo-img"
                 style={{ 
                   maxHeight: '45px', 
                   maxWidth: '140px', 
                   objectFit: 'contain',
-                  filter: 'grayscale(0.8)',
-                  opacity: 0.7,
+                  filter: 'none',
+                  opacity: 1,
                   transition: '0.3s'
                 }} 
-                onMouseEnter={(e) => { e.currentTarget.style.filter = 'grayscale(0)'; e.currentTarget.style.opacity = '1'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.filter = 'grayscale(0.8)'; e.currentTarget.style.opacity = '0.7'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               />
             </div>
           ))}
@@ -82,41 +83,59 @@ const LogoSlider = () => {
       </div>
 
       {/* Row 2 */}
-      <div style={{ position: 'relative', height: '120px', display: 'flex', alignItems: 'center' }}>
+      <div className="logo-slider-row" style={{ position: 'relative', height: '120px', display: 'flex', alignItems: 'center' }}>
         <motion.div
           animate={{ x: [-1035, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
           style={{ display: 'flex', width: 'max-content' }}
         >
           {[...row2, ...row2, ...row2].map((brand, i) => (
-            <div key={i} style={{ 
+            <div key={i} className="logo-slider-item" style={{ 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
               width: '200px', 
               height: '118px', 
               borderRight: '1px solid #eee',
-              padding: '0 2rem',
+              padding: '0 2.5rem',
               background: '#fff' 
             }}>
               <img 
                 src={brand.logo} 
                 alt={brand.name} 
+                className="logo-img"
                 style={{ 
                   maxHeight: '45px', 
                   maxWidth: '140px', 
                   objectFit: 'contain',
-                  filter: 'grayscale(0.8)',
-                  opacity: 0.7,
+                  filter: 'none',
+                  opacity: 1,
                   transition: '0.3s'
                 }} 
-                onMouseEnter={(e) => { e.currentTarget.style.filter = 'grayscale(0)'; e.currentTarget.style.opacity = '1'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.filter = 'grayscale(0.8)'; e.currentTarget.style.opacity = '0.7'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               />
             </div>
           ))}
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .logo-slider-row {
+            height: 70px !important;
+          }
+          .logo-slider-item {
+            width: 140px !important;
+            height: 68px !important;
+            padding: 0 1rem !important;
+          }
+          .logo-img {
+            max-height: 28px !important;
+            max-width: 90px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
