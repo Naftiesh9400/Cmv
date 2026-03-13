@@ -1,32 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import ProjectCloud from '../assets/project_cloud.png';
-import ProjectSecurity from '../assets/project_security.png';
-import ProjectCRM from '../assets/project_crm.png';
-import ProjectHealthcare from '../assets/project_healthcare.png';
-
-const projects = [
-  {
-    img: ProjectCloud,
-    title: 'Cloud Infrastructure Optimization',
-    desc: 'Streamlined a retail company\'s cloud architecture to reduce costs by 30% and improve scalability using AWS and automation tools.',
-  },
-  {
-    img: ProjectSecurity,
-    title: 'Enterprise Network Security Upgrade',
-    desc: 'Implemented next-gen firewalls, intrusion detection, and endpoint protection for a financial firm to eliminate critical security gaps.',
-  },
-  {
-    img: ProjectCRM,
-    title: 'Custom CRM Integration Solution',
-    desc: 'Built and integrated a custom CRM system for a logistics company, boosting lead management efficiency by 45%.',
-  },
-  {
-    img: ProjectHealthcare,
-    title: 'Healthcare Data Migration Project',
-    desc: 'Migrated sensitive patient records to a secure, HIPAA-compliant cloud environment with zero downtime for a hospital network.',
-  },
-];
+import { projectPosts as projects } from '../data/projectData';
 
 const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   return (
@@ -102,13 +76,12 @@ const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
         {/* ── Responsive 3-Column Grid ── */}
         <div className="responsive-grid-3">
           {projects.map((project, i) => (
-            <motion.div
+            <Link
+              to={`/projects/${project.slug}`}
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
               style={{
+                display: 'block',
+                textDecoration: 'none',
                 background: '#fff',
                 borderRadius: '1.25rem',
                 overflow: 'hidden',
@@ -117,7 +90,14 @@ const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                 cursor: 'pointer',
                 transition: 'box-shadow 0.3s ease, transform 0.3s ease',
               }}
-              whileHover={{ y: -5, boxShadow: '0 16px 40px rgba(0,0,0,0.1)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.1)';
+                e.currentTarget.style.transform = 'translateY(-5px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
               {/* Image */}
               <div style={{ overflow: 'hidden', aspectRatio: '16/9' }}>
@@ -160,8 +140,7 @@ const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                 >
                   {project.desc}
                 </p>
-                <Link
-                  to="/projects"
+                <div
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -172,14 +151,12 @@ const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                     textDecoration: 'none',
                     transition: 'gap 0.2s ease',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.gap = '12px')}
-                  onMouseLeave={(e) => (e.currentTarget.style.gap = '6px')}
                 >
                   Read More
                   <span style={{ fontSize: '1rem' }}>↗</span>
-                </Link>
+                </div>
               </div>
-            </motion.div>
+            </Link>
           ))}
         </div>
 
