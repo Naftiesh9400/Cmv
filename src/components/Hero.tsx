@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="relative w-full flex justify-center md:justify-end items-center"
+          className="relative w-full hidden md:flex justify-center md:justify-end items-center"
           initial={{ opacity: 0, scale: 0.95, x: 50 }}
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
