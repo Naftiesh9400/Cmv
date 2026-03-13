@@ -121,64 +121,88 @@ const Header: React.FC = () => {
               position: 'fixed',
               inset: 0,
               zIndex: 9999,
-              backgroundColor: '#E9EEF2',
+              background: 'rgba(255, 255, 255, 0.98)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
               display: 'flex',
               flexDirection: 'column',
               overflowY: 'auto',
             }}
           >
-            {/* Drawer Header */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '1.5rem 1.75rem',
-                backgroundColor: '#E9EEF2',
-              }}
-            >
-              <img src={Logo} alt="CMV Logo" style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
-              <button
-                className="btn-close"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close menu"
+              {/* Drawer Header */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '1.5rem 1.75rem',
+                }}
               >
-                <X size={22} />
-              </button>
-            </div>
+                <img src={Logo} alt="CMV Logo" style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    background: '#f1f5f9',
+                    border: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#64748b',
+                    cursor: 'pointer'
+                  }}
+                  aria-label="Close menu"
+                >
+                  <X size={24} />
+                </button>
+              </div>
 
             {/* Nav Links */}
             <nav
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                justifyContent: 'center',
                 padding: '2rem 2.5rem',
-                gap: '2rem',
+                gap: '2.5rem',
                 flex: 1,
-                marginTop: '1rem',
               }}
             >
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.06 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.2 + (idx * 0.08),
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
                 >
+                  {location.pathname === link.path && (
+                    <motion.div 
+                      layoutId="active-dot"
+                      style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F43F5E' }} 
+                    />
+                  )}
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     style={{
-                      fontSize: '2.2rem',
-                      fontWeight: 800,
-                      color: location.pathname === link.path ? '#F43F5E' : '#1E293B',
+                      fontSize: '2.5rem',
+                      fontWeight: 700,
+                      color: location.pathname === link.path ? '#0f172a' : '#64748b',
                       textDecoration: 'none',
                       fontFamily: 'Outfit, sans-serif',
-                      lineHeight: 1.2,
-                      transition: 'color 0.2s',
+                      lineHeight: 1.1,
+                      transition: 'all 0.3s ease',
+                      letterSpacing: '-0.02em'
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#F43F5E')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = location.pathname === link.path ? '#F43F5E' : '#1E293B')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#0f172a')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = location.pathname === link.path ? '#0f172a' : '#64748b')}
                   >
                     {link.name}
                   </Link>
@@ -186,11 +210,11 @@ const Header: React.FC = () => {
               ))}
             </nav>
 
-            {/* CTA at bottom */}
-            <div style={{ padding: '2rem 2.5rem' }}>
+            {/* CTA and Info at bottom */}
+            <div style={{ padding: '2rem 2.5rem', borderTop: '1px solid #f1f5f9', background: '#fff' }}>
               <button
                 className="btn btn-primary"
-                style={{ width: '100%' }}
+                style={{ width: '100%', marginBottom: '2rem' }}
                 onClick={() => {
                   setIsOpen(false);
                   navigate('/contact');
@@ -198,6 +222,11 @@ const Header: React.FC = () => {
               >
                 Get in Touch
               </button>
+
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', color: '#64748b' }}>
+                <span style={{ fontSize: '0.9rem' }}>help@cmv-global.com</span>
+                <span style={{ fontSize: '0.9rem' }}>+1 (555) 123-4567</span>
+              </div>
             </div>
           </motion.div>
         )}
