@@ -1,31 +1,29 @@
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import LogoSlider from './components/LogoSlider'
-import AboutSection from './components/AboutSection'
-import StatsSection from './components/StatsSection'
-import ServicesSection from './components/ServicesSection'
+import Footer from './components/Footer'
+
+import Home from './pages/Home'
+import About from './pages/About'
+import Projects from './pages/Projects'
+import Services from './pages/Services'
+import Blog from './pages/Blog'
+import Contact from './pages/Contact'
 
 function App() {
   return (
     <div className="min-h-screen">
       <Header />
       <main>
-        <Hero />
-        <LogoSlider />
-        <AboutSection />
-        <StatsSection />
-        <ServicesSection />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/service" element={<Services />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
-
-
-
-
-      {/* Additional sections can be added here */}
-      <footer className="py-20 bg-white border-t border-gray-100">
-        <div className="container text-center text-text-muted">
-          <p>&copy; 2026 . All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

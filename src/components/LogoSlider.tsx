@@ -1,49 +1,97 @@
 import { motion } from 'framer-motion';
+import logo1 from '../assets/logo/747.png';
+import logo2 from '../assets/logo/Google_2015_logo.svg.webp';
+import logo3 from '../assets/logo/Microsoft-Logo-PNG-Pic.png';
 
 const logos = [
-  { name: 'Google', url: 'https://www.vectorlogo.zone/logos/google/google-ar21.svg' },
-  { name: 'Medium', url: 'https://www.vectorlogo.zone/logos/medium/medium-ar21.svg' },
-  { name: 'FactSet', url: 'https://www.vectorlogo.zone/logos/factset/factset-ar21.svg' },
-  { name: 'Bunge', url: 'https://www.vectorlogo.zone/logos/bunge/bunge-ar21.svg' },
-  { name: 'Celanese', url: 'https://www.vectorlogo.zone/logos/celanese/celanese-ar21.svg' },
-  { name: 'Darden', url: 'https://www.vectorlogo.zone/logos/darden/darden-ar21.svg' },
+  { name: 'Partner 1', url: logo1 },
+  { name: 'Partner 2', url: logo2 },
+  { name: 'Partner 3', url: logo3 },
+  { name: 'Partner 1', url: logo1 },
+  { name: 'Partner 2', url: logo2 },
+  { name: 'Partner 3', url: logo3 },
 ];
 
 const LogoSlider = () => {
-  // Duplicating logos to create seamless loop
-  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
+  // Triple the logos to ensure a seamless infinite loop on all screen widths
+  const duplicatedLogos = [...logos, ...logos, ...logos];
 
   return (
-    <div className="py-16 bg-white border-y border-gray-100 overflow-hidden select-none">
-      <div className="container mb-10 text-center">
-        <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#9CA3AF]">Trusted by Industry Leaders</p>
+    <div style={{ padding: '4rem 0', background: '#fff', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', overflow: 'hidden', userSelect: 'none' }}>
+      <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '4px 16px',
+            borderRadius: '9999px',
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
+            marginBottom: '1rem',
+          }}
+        >
+          <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            Trusted by Industry Leaders
+          </span>
+        </div>
       </div>
       
-      <div className="relative flex overflow-hidden">
+      <div style={{ display: 'flex', overflow: 'hidden', position: 'relative', width: '100%' }}>
+        {/* Gradient fades at edges */}
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '100px', background: 'linear-gradient(to right, #fff, transparent)', zIndex: 10 }}></div>
+        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '100px', background: 'linear-gradient(to left, #fff, transparent)', zIndex: 10 }}></div>
+
         <motion.div
           animate={{
-            x: [0, -2500],
+            x: [0, -1000],
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 50,
+              duration: 30,
               ease: "linear",
             },
           }}
-          className="flex whitespace-nowrap"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '3rem',
+            whiteSpace: 'nowrap',
+          }}
         >
           {duplicatedLogos.map((logo, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-center px-16 md:px-24"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0 2rem',
+                minWidth: '150px'
+              }}
             >
               <img
                 src={logo.url}
                 alt={logo.name}
-                className="h-12 md:h-14 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                style={{ maxWidth: '180px' }}
+                style={{
+                  height: '35px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  filter: 'grayscale(1)',
+                  opacity: 0.4,
+                  transition: 'all 0.4s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.filter = 'grayscale(0)';
+                  e.currentTarget.style.opacity = '1';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.filter = 'grayscale(1)';
+                  e.currentTarget.style.opacity = '0.4';
+                }}
               />
             </div>
           ))}
@@ -52,6 +100,5 @@ const LogoSlider = () => {
     </div>
   );
 };
-
 
 export default LogoSlider;

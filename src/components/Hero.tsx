@@ -72,18 +72,19 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
-            className="flex gap-6"
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', maxWidth: '400px' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <button className="btn btn-primary shadow-lg group">
+            <button className="btn btn-primary shadow-lg group" style={{ flex: '1 1 140px', justifyContent: 'center' }}>
               Get Started <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
             </button>
-            <button className="btn btn-outline">
+            <button className="btn btn-outline" style={{ flex: '1 1 140px', justifyContent: 'center' }}>
               Learn More
             </button>
           </motion.div>
+
         </motion.div>
 
         <motion.div

@@ -51,39 +51,48 @@ const ServicesSection = () => {
       }}
     >
       <div className="container">
-        {/* Header */}
+        {/* Center Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}
+           initial={{ opacity: 0, y: 24 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem' }}
         >
           {/* Badge */}
           <div
             style={{
-              display: 'inline-block',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
               padding: '6px 20px',
               borderRadius: '9999px',
-              background: 'linear-gradient(90deg, rgba(244,63,94,0.1) 0%, rgba(251,146,60,0.1) 100%)',
+              background: 'linear-gradient(90deg, rgba(244,63,94,0.1), rgba(251,146,60,0.1))',
               border: '1px solid rgba(244,63,94,0.2)',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: '#F43F5E',
               marginBottom: '1.25rem',
             }}
           >
-            What We Offer
+            <div
+              style={{
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #F43F5E, #FB923C)',
+              }}
+            />
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#F43F5E', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              What We Offer
+            </span>
           </div>
           <h2
             style={{
               fontSize: 'clamp(2rem, 4vw, 2.75rem)',
               fontWeight: 800,
-              color: '#1E293B',
+              color: '#0f172a',
               fontFamily: 'Outfit, sans-serif',
               margin: '0 0 1rem',
               lineHeight: 1.15,
+              textTransform: 'uppercase',
+              letterSpacing: '-0.01em',
             }}
           >
             Comprehensive{' '}
@@ -95,10 +104,12 @@ const ServicesSection = () => {
               }}
             >
               IT Services
-            </span>{' '}
-            for Your Business
+            </span>
+            <br />
+            For Your Business.
           </h2>
-          <p style={{ color: '#6b7280', lineHeight: 1.75, margin: 0, fontSize: '1rem' }}>
+
+          <p style={{ color: '#6b7280', lineHeight: 1.75, margin: '0 0 2rem', fontSize: '1rem' }}>
             From cloud to cybersecurity, we deliver end-to-end technology solutions tailored to drive your business forward.
           </p>
         </motion.div>

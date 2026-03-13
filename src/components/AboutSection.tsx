@@ -28,32 +28,70 @@ const AboutSection = () => {
   return (
     <section style={{ padding: '6rem 0', background: '#fff', overflow: 'hidden' }}>
       <div className="container">
-        {/* --- Section Title --- */}
+        {/* --- Centered Header --- */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem' }}
         >
+          {/* Badge */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 20px',
+              borderRadius: '9999px',
+              background: 'linear-gradient(90deg, rgba(244,63,94,0.1), rgba(251,146,60,0.1))',
+              border: '1px solid rgba(244,63,94,0.2)',
+              marginBottom: '1.25rem',
+            }}
+          >
+            <div
+              style={{
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #F43F5E, #FB923C)',
+              }}
+            />
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#F43F5E', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              About Us
+            </span>
+          </div>
           <h2
             style={{
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              fontSize: 'clamp(2rem, 4.5vw, 3rem)',
               fontWeight: 800,
               color: '#0f172a',
               marginBottom: '1.25rem',
               lineHeight: 1.15,
               fontFamily: 'Outfit, sans-serif',
+              textTransform: 'uppercase',
+              letterSpacing: '-0.01em',
             }}
           >
-            Empowering Business with Tech
+            Empowering Business
+            <br />
+            With{' '}
+            <span
+              style={{
+                background: 'linear-gradient(90deg, #F43F5E 0%, #FB923C 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Technology.
+            </span>
           </h2>
           <p
             style={{
               fontSize: '1.05rem',
               color: '#6b7280',
               lineHeight: 1.8,
-              maxWidth: '580px',
-              margin: '0 auto',
+              margin: '0 auto 2rem',
+              maxWidth: '600px'
             }}
           >
             At CMV, we specialize in delivering smart, scalable, and secure IT solutions
@@ -158,6 +196,41 @@ const AboutSection = () => {
 
           </motion.div>
         </div>
+
+        {/* --- Bottom Button --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ textAlign: 'center', marginTop: '4rem' }}
+        >
+          <button
+            style={{
+              padding: '12px 36px',
+              border: '1.5px solid rgba(244,63,94,0.3)',
+              borderRadius: '9999px',
+              background: 'transparent',
+              color: '#F43F5E',
+              fontWeight: 700,
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(90deg, #F43F5E 0%, #FB923C 100%)';
+              e.currentTarget.style.color = '#fff';
+              e.currentTarget.style.borderColor = 'transparent';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = '#F43F5E';
+              e.currentTarget.style.borderColor = 'rgba(244,63,94,0.3)';
+            }}
+          >
+            Learn More
+          </button>
+        </motion.div>
       </div>
     </section>
   );

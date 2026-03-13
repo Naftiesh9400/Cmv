@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navLinks = ['Home', 'About', 'Projects', 'Service', 'Blog', 'Contact'];
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Service', path: '/service' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Contact', path: '/contact' }
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -46,27 +57,27 @@ const Header: React.FC = () => {
       >
         <div className="container flex items-center justify-between">
           {/* Logo */}
-          <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
             <img src={Logo} alt="CMV Logo" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-2">
-            {navLinks.map((link, idx) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className={`nav-pill ${idx === 0 ? 'active' : ''}`}
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`nav-pill ${location.pathname === link.path ? 'active' : ''}`}
                 onMouseEnter={(e) => e.currentTarget.classList.add('active')}
-                onMouseLeave={(e) => { if (idx !== 0) e.currentTarget.classList.remove('active'); }}
+                onMouseLeave={(e) => { if (location.pathname !== link.path) e.currentTarget.classList.remove('active'); }}
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-4">
-            <button className="hidden md:block btn btn-primary">
+            <button className="hidden md:block btn btn-primary" onClick={() => navigate('/contact')}>
               Get in Touch
             </button>
 
@@ -148,27 +159,30 @@ const Header: React.FC = () => {
               }}
             >
               {navLinks.map((link, idx) => (
-                <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  onClick={() => setIsOpen(false)}
+                <motion.div
+                  key={link.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.06 }}
-                  style={{
-                    fontSize: '2.2rem',
-                    fontWeight: 800,
-                    color: '#1E293B',
-                    textDecoration: 'none',
-                    fontFamily: 'Outfit, sans-serif',
-                    lineHeight: 1.2,
-                    transition: 'color 0.2s',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#2563EB')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#1E293B')}
                 >
-                  {link}
-                </motion.a>
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    style={{
+                      fontSize: '2.2rem',
+                      fontWeight: 800,
+                      color: location.pathname === link.path ? '#F43F5E' : '#1E293B',
+                      textDecoration: 'none',
+                      fontFamily: 'Outfit, sans-serif',
+                      lineHeight: 1.2,
+                      transition: 'color 0.2s',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#F43F5E')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = location.pathname === link.path ? '#F43F5E' : '#1E293B')}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
@@ -177,7 +191,10 @@ const Header: React.FC = () => {
               <button
                 className="btn btn-primary"
                 style={{ width: '100%' }}
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate('/contact');
+                }}
               >
                 Get in Touch
               </button>
