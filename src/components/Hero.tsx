@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
               className="btn btn-primary shadow-lg group" 
               style={{ flex: '1 1 170px', justifyContent: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
             >
-              Get Started <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+              Get Started <span className="ml-2 group-hover:translate-x-1 transition-transform"></span>
             </Link>
             <Link 
               to="/about" 

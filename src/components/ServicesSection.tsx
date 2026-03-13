@@ -1,45 +1,82 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Lightbulb, Lock, LifeBuoy, BarChart3, Cloud, Code2 } from 'lucide-react';
+import { 
+  Code2, 
+  Smartphone, 
+  Cpu, 
+  Cloud, 
+  Database, 
+  Bot, 
+  Building2, 
+  TrendingDown, 
+  Layers, 
+  Palette 
+} from 'lucide-react';
 
-// Logo brand colors: navy (#1E293B) + gradient red→orange (#F43F5E → #FB923C)
+// Updated services based on core offerings
 const services = [
   {
-    icon: <Lightbulb size={36} strokeWidth={1.5} />,
-    title: 'Tailored IT Strategy & Consulting',
-    description:
-      'Align your tech investments with your business goals through expert-led planning, system reviews, and digital transformation roadmaps.',
-  },
-  {
-    icon: <Lock size={36} strokeWidth={1.5} />,
-    title: 'Cybersecurity Risk Assessment',
-    description:
-      'Identify and eliminate vulnerabilities with our end-to-end security audits, penetration testing, and compliance strategies tailored.',
+    icon: <Code2 size={36} strokeWidth={1.5} />,
+    title: 'Web Development Services',
+    description: 'Build high-performance, responsive websites and progressive web apps using the latest frameworks.',
     featured: true,
+    slug: 'web-development',
   },
   {
-    icon: <LifeBuoy size={36} strokeWidth={1.5} />,
-    title: 'Managed Support Services',
-    description:
-      'Get 24/7 proactive IT support, real-time monitoring, and issue resolution to keep your systems running smoothly and your team productive.',
+    icon: <Smartphone size={36} strokeWidth={1.5} />,
+    title: 'Mobile App Development',
+    description: 'Craft seamless native and cross-platform mobile experiences for iOS and Android devices.',
+    slug: 'mobile-app-development',
   },
   {
-    icon: <BarChart3 size={36} strokeWidth={1.5} />,
-    title: 'Data Analytics Solutions',
-    description:
-      'Transform raw data into actionable insights that drive smarter decisions, improved forecasting, and business innovation.',
+    icon: <Cpu size={36} strokeWidth={1.5} />,
+    title: 'Software Development',
+    description: 'Develop robust, scalable enterprise software solutions tailored to your unique business logic.',
+    slug: 'software-development',
   },
   {
     icon: <Cloud size={36} strokeWidth={1.5} />,
-    title: 'Cloud Infrastructure',
-    description:
-      'Seamless cloud migration and management services on AWS, Azure, and GCP to scale your business confidently.',
+    title: 'Cloud Management',
+    description: 'Expert infrastructure management on AWS, Azure, and GCP with a focus on reliability and uptime.',
+    featured: true,
+    slug: 'cloud-management',
   },
   {
-    icon: <Code2 size={36} strokeWidth={1.5} />,
-    title: 'Custom Software Dev',
-    description:
-      'Build robust, scalable software applications tailored to your specific business needs and industry standards.',
+    icon: <Database size={36} strokeWidth={1.5} />,
+    title: 'Data Engineering Services',
+    description: 'Design and implement advanced data pipelines, warehouses, and real-time processing systems.',
+    slug: 'data-engineering',
+  },
+  {
+    icon: <Bot size={36} strokeWidth={1.5} />,
+    title: 'AI Automation Services',
+    description: 'Leverage machine learning and AI agents to automate workflows and drive intelligent decisions.',
+    slug: 'ai-automation',
+  },
+  {
+    icon: <Building2 size={36} strokeWidth={1.5} />,
+    title: 'Enterprise Development',
+    description: 'Scale your business with integrated enterprise-grade systems and legacy modernization.',
+    slug: 'enterprise-development',
+  },
+  {
+    icon: <TrendingDown size={36} strokeWidth={1.5} />,
+    title: 'Cloud Cost Optimization',
+    description: 'Analyze and reduce your cloud spend without compromising on performance or security.',
+    featured: true,
+    slug: 'cloud-cost-optimization',
+  },
+  {
+    icon: <Layers size={36} strokeWidth={1.5} />,
+    title: 'Architecture & Design',
+    description: 'Strategic system architecture planning to ensure long-term scalability and technical excellence.',
+    slug: 'architecture-designs',
+  },
+  {
+    icon: <Palette size={36} strokeWidth={1.5} />,
+    title: 'Product Design & UI/UX',
+    description: 'Transform user experiences with intuitive product designs and modern, accessible interfaces.',
+    slug: 'design-and-ux',
   },
 ];
 
@@ -48,7 +85,7 @@ const ServicesSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
     <section
       id="service"
       style={{
-        padding: '4rem 0',
+        padding: '3rem 0',
         background: 'linear-gradient(180deg, #f8faff 0%, #ffffff 100%)',
       }}
     >
@@ -119,14 +156,11 @@ const ServicesSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
         {/* Responsive 3-Column Grid */}
         <div className="responsive-grid-3">
           {services.map((service, i) => (
-            <motion.div
+            <Link
+              to={`/service/${service.slug}`}
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              whileHover={{ y: -10, transition: { duration: 0.2 } }}
               style={{
+                textDecoration: 'none',
                 background: service.featured ? '#ffffff' : '#f9fbff',
                 borderRadius: '1.5rem',
                 padding: '3rem 2.25rem',
@@ -147,6 +181,7 @@ const ServicesSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                   e.currentTarget.style.borderColor = 'rgba(244, 63, 94, 0.4)';
                   e.currentTarget.style.background = '#ffffff';
                   e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(244, 63, 94, 0.1)';
+                  e.currentTarget.style.transform = 'translateY(-10px)';
                   const icon = e.currentTarget.querySelector('.service-icon') as HTMLDivElement;
                   if (icon) {
                      icon.style.transform = 'scale(1.1) rotate(5deg)';
@@ -159,6 +194,7 @@ const ServicesSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                   e.currentTarget.style.borderColor = service.featured ? '#eef2f6' : 'transparent';
                   e.currentTarget.style.background = service.featured ? '#ffffff' : '#f9fbff';
                   e.currentTarget.style.boxShadow = service.featured ? '0 10px 30px rgba(0,0,0,0.02)' : 'none';
+                  e.currentTarget.style.transform = 'translateY(0)';
                   const icon = e.currentTarget.querySelector('.service-icon') as HTMLDivElement;
                   if (icon) {
                      icon.style.transform = 'scale(1) rotate(0deg)';
@@ -217,8 +253,7 @@ const ServicesSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                     {service.description}
                   </p>
                   
-                  <Link 
-                    to="/service"
+                  <div 
                     style={{ 
                       marginTop: '0.5rem', 
                       display: 'flex', 
@@ -228,23 +263,12 @@ const ServicesSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                       fontWeight: 700, 
                       fontSize: '0.9rem',
                       textDecoration: 'none',
-                      transition: 'gap 0.3s'
-                    }}
-                    onMouseEnter={(e) => {
-                      const span = e.currentTarget.querySelector('span');
-                      if (span) span.style.transform = 'translateX(4px)';
-                      e.currentTarget.style.gap = '12px';
-                    }}
-                    onMouseLeave={(e) => {
-                      const span = e.currentTarget.querySelector('span');
-                      if (span) span.style.transform = 'translateX(0)';
-                      e.currentTarget.style.gap = '8px';
                     }}
                   >
-                    Learn More <span style={{ transition: 'transform 0.3s' }}>→</span>
-                  </Link>
+                    Learn More <span>→</span>
+                  </div>
                 </div>
-              </motion.div>
+              </Link>
             ))}
           </div>
 

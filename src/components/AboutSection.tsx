@@ -22,7 +22,7 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="about" style={{ padding: '6rem 0', background: '#fff', overflow: 'hidden' }}>
+    <section id="about" style={{ padding: '3.5rem 0', background: '#fff', overflow: 'hidden' }}>
       <div className="container">
         <div className="responsive-grid-2" style={{ alignItems: 'flex-start', gap: '4rem' }}>
           

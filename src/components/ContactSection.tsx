@@ -8,7 +8,7 @@ const ContactSection = ({
   showMap?: boolean;
 }) => {
   return (
-    <section id="contact" style={{ padding: '4rem 0', background: '#f8faff', overflow: 'hidden' }}>
+    <section id="contact" style={{ padding: '3rem 0', background: '#f8faff', overflow: 'hidden' }}>
       <div className="container">
         <div className="responsive-grid-2" style={{ alignItems: 'center' }}>
           {/* Left: Info */}

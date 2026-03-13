@@ -6,6 +6,7 @@ import ServicesSection from '../components/ServicesSection';
 import ProjectsSection from '../components/ProjectsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import BlogSection from '../components/BlogSection';
+import FAQSection from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
 
 const Home = () => {
@@ -13,12 +14,13 @@ const Home = () => {
     <>
       <Hero />
       <LogoSlider />
+      <ServicesSection />
       <AboutSection />
       <StatsSection />
-      <ServicesSection />
       <ProjectsSection />
       <TestimonialsSection />
       <BlogSection />
+      <FAQSection />
       <ContactSection showContactInfo={false} showMap={false} />
     </>
   );

@@ -16,7 +16,7 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   return (
     <section
       id="blog"
-      style={{ padding: '4rem 0', background: '#fff', overflow: 'hidden' }}
+      style={{ padding: '3rem 0', background: '#fff', overflow: 'hidden' }}
     >
       <div className="container">
         {/* Center Header */}

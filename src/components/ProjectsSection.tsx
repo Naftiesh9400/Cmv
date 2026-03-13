@@ -7,7 +7,7 @@ const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
     <section
       id="projects"
       style={{
-        padding: '4rem 0',
+        padding: '3rem 0',
         background: '#fff',
       }}
     >

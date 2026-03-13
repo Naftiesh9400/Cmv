@@ -47,7 +47,7 @@ const TestimonialsSection = () => {
   return (
     <section
       style={{
-        padding: '4rem 0',
+        padding: '3rem 0',
         background: '#f8faff',
         overflow: 'hidden',
       }}

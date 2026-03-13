@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Logo from '../assets/logo.png';
+import Logo from '../assets/qwq 2.png';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
