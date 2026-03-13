@@ -39,8 +39,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
-      className="py-12 overflow-hidden min-h-[80vh] flex items-center"
-
+      className="pt-24 pb-12 md:py-12 overflow-hidden min-h-[80vh] flex items-center"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -50,10 +49,10 @@ const Hero: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="z-20"
+          className="z-20 pt-10 md:pt-0"
         >
           <motion.h1
-            className="text-6xl lg:text-7xl font-bold font-outfit leading-[1.1] mb-8 text-navy"
+            className="text-5xl lg:text-7xl font-bold font-outfit leading-[1.1] mb-8 text-navy"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -64,7 +63,7 @@ const Hero: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="text-text-muted text-xl mb-10 max-w-lg leading-relaxed"
+            className="text-text-muted text-lg md:text-xl mb-10 max-w-lg leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -97,7 +96,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="relative w-full hidden md:flex justify-center md:justify-end items-center"
+          className="relative w-full hidden md:flex justify-center md:justify-end items-center hero-image-container"
           initial={{ opacity: 0, scale: 0.95, x: 50 }}
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -130,6 +129,14 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .hero-image-container {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
