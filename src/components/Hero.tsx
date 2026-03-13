@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import HeroImage from '../assets/Heros-05.png';
 
 const Hero: React.FC = () => {
@@ -38,12 +39,12 @@ const Hero: React.FC = () => {
 
   return (
     <section
-      className="py-16 overflow-hidden min-h-[90vh] flex items-center"
+      className="py-12 overflow-hidden min-h-[80vh] flex items-center"
 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="container grid md:grid-cols-2 gap-4 items-center">
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -77,12 +78,20 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <button className="btn btn-primary shadow-lg group" style={{ flex: '1 1 140px', justifyContent: 'center' }}>
+            <Link 
+              to="/contact" 
+              className="btn btn-primary shadow-lg group" 
+              style={{ flex: '1 1 170px', justifyContent: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+            >
               Get Started <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </button>
-            <button className="btn btn-outline" style={{ flex: '1 1 140px', justifyContent: 'center' }}>
+            </Link>
+            <Link 
+              to="/about" 
+              className="btn btn-outline" 
+              style={{ flex: '1 1 160px', justifyContent: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+            >
               Learn More
-            </button>
+            </Link>
           </motion.div>
 
         </motion.div>

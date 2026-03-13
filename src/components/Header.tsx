@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          padding: '1.25rem 0',
+          padding: '1rem 0',
           transition: 'background 0.3s ease, box-shadow 0.3s ease',
           background: scrolled
             ? 'rgba(255, 255, 255, 0.95)'
@@ -106,7 +106,7 @@ const Header: React.FC = () => {
       </motion.header>
 
       {/* Spacer to push content below fixed header */}
-      <div style={{ height: '88px' }} aria-hidden="true" />
+      <div style={{ height: '80px' }} aria-hidden="true" />
 
       {/* Mobile Nav Overlay */}
       <AnimatePresence>

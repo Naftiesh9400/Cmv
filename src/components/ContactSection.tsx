@@ -1,17 +1,16 @@
 import { motion } from 'framer-motion';
 
-const ContactSection = ({ showContactInfo = true }: { showContactInfo?: boolean }) => {
+const ContactSection = ({ 
+  showContactInfo = true, 
+  showMap = true 
+}: { 
+  showContactInfo?: boolean;
+  showMap?: boolean;
+}) => {
   return (
-    <section id="contact" style={{ padding: '6rem 0', background: '#f8faff', overflow: 'hidden' }}>
+    <section id="contact" style={{ padding: '4rem 0', background: '#f8faff', overflow: 'hidden' }}>
       <div className="container">
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '4rem',
-            alignItems: 'center',
-          }}
-        >
+        <div className="responsive-grid-2" style={{ alignItems: 'center' }}>
           {/* Left: Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -78,7 +77,7 @@ const ContactSection = ({ showContactInfo = true }: { showContactInfo?: boolean 
                   <div style={{ fontSize: '0.9rem', color: '#9ca3af', fontWeight: 600, textTransform: 'uppercase', marginBottom: '4px' }}>
                     Email Us
                   </div>
-                  <div style={{ fontSize: '1.1rem', color: '#0f172a', fontWeight: 700 }}>contact@cmvtechnologies.com</div>
+                  <div style={{ fontSize: '1.1rem', color: '#0f172a', fontWeight: 700 }}>help@cmv-global.com</div>
                 </div>
                 <div>
                   <div style={{ fontSize: '0.9rem', color: '#9ca3af', fontWeight: 600, textTransform: 'uppercase', marginBottom: '4px' }}>
@@ -98,7 +97,7 @@ const ContactSection = ({ showContactInfo = true }: { showContactInfo?: boolean 
             transition={{ duration: 0.5, delay: 0.2 }}
             style={{
               background: '#fff',
-              padding: '2.5rem',
+              padding: 'clamp(1.5rem, 5vw, 2.5rem)',
               borderRadius: '1.5rem',
               boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
               border: '1px solid #f0f2f5',
@@ -254,6 +253,36 @@ const ContactSection = ({ showContactInfo = true }: { showContactInfo?: boolean 
             </form>
           </motion.div>
         </div>
+
+        {/* --- Google Map --- */}
+        {showMap && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            style={{
+              marginTop: '4rem',
+              borderRadius: '1.5rem',
+              overflow: 'hidden',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.08)',
+              border: '1px solid #f0f2f5',
+              height: '450px',
+              width: '100%'
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.5847377561!2d77.4045353!3d28.5221297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce9ae1a9a9a1b%3A0xc3f1f7e3c15f5c1!2sBhutani%20Alphathum!5e0!3m2!1sen!2sin!4v1710334800000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="CMV Technologies Office Location"
+            />
+          </motion.div>
+        )}
       </div>
     </section>
   );

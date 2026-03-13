@@ -13,12 +13,12 @@ const logos = [
 ];
 
 const LogoSlider = () => {
-  // Triple the logos to ensure a seamless infinite loop on all screen widths
-  const duplicatedLogos = [...logos, ...logos, ...logos];
+  // Duplicate logos once for seamless infinite loop
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
-    <div style={{ padding: '4rem 0', background: '#fff', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', overflow: 'hidden', userSelect: 'none' }}>
-      <div className="container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+    <div style={{ padding: '3rem 0', background: '#fff', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', overflow: 'hidden', userSelect: 'none' }}>
+      <div className="container" style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <div
           style={{
             display: 'inline-flex',
@@ -44,21 +44,22 @@ const LogoSlider = () => {
 
         <motion.div
           animate={{
-            x: [0, -1000],
+            x: ["0%", "-50%"],
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 30,
+              duration: 25,
               ease: "linear",
             },
           }}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '3rem',
+            gap: '4rem',
             whiteSpace: 'nowrap',
+            width: 'max-content',
           }}
         >
           {duplicatedLogos.map((logo, idx) => (
@@ -69,14 +70,14 @@ const LogoSlider = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: '0 2rem',
-                minWidth: '150px'
+                minWidth: '200px'
               }}
             >
               <img
                 src={logo.url}
                 alt={logo.name}
                 style={{
-                  height: '35px',
+                  height: '40px',
                   width: 'auto',
                   objectFit: 'contain',
                   filter: 'grayscale(1)',

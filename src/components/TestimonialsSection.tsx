@@ -47,7 +47,7 @@ const TestimonialsSection = () => {
   return (
     <section
       style={{
-        padding: '6rem 0',
+        padding: '4rem 0',
         background: '#f8faff',
         overflow: 'hidden',
       }}
@@ -58,7 +58,7 @@ const TestimonialsSection = () => {
            initial={{ opacity: 0, y: 24 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem' }}
+           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem' }}
         >
           {/* Badge */}
           <div
@@ -262,7 +262,7 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ textAlign: 'center', marginTop: '4rem' }}
+          style={{ textAlign: 'center', marginTop: '3rem' }}
         >
           <button
             style={{

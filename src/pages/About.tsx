@@ -5,7 +5,7 @@ import TestimonialsSection from '../components/TestimonialsSection';
 const About = () => {
   return (
     <div style={{ paddingTop: '2rem' }}>
-      <AboutSection />
+      <AboutSection showViewAll={false} />
       <StatsSection />
       <TestimonialsSection />
     </div>

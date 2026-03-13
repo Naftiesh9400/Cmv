@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import ProjectCloud from '../assets/project_cloud.png';
 import ProjectSecurity from '../assets/project_security.png';
 import ProjectCRM from '../assets/project_crm.png';
@@ -27,12 +28,12 @@ const projects = [
   },
 ];
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   return (
     <section
       id="projects"
       style={{
-        padding: '6rem 0',
+        padding: '4rem 0',
         background: '#fff',
       }}
     >
@@ -42,7 +43,7 @@ const ProjectsSection = () => {
            initial={{ opacity: 0, y: 24 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem' }}
+           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem' }}
         >
           {/* Badge */}
           <div
@@ -98,14 +99,8 @@ const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        {/* ── 2×2 Cards Grid ── */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '2rem',
-          }}
-        >
+        {/* ── Responsive 3-Column Grid ── */}
+        <div className="responsive-grid-3">
           {projects.map((project, i) => (
             <motion.div
               key={i}
@@ -165,8 +160,8 @@ const ProjectsSection = () => {
                 >
                   {project.desc}
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/projects"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -182,46 +177,53 @@ const ProjectsSection = () => {
                 >
                   Read More
                   <span style={{ fontSize: '1rem' }}>↗</span>
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
         </div>
 
         {/* --- Bottom Button --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginTop: '4rem' }}
-        >
-          <button
-            style={{
-              padding: '12px 36px',
-              border: '1.5px solid rgba(244,63,94,0.3)',
-              borderRadius: '9999px',
-              background: 'transparent',
-              color: '#F43F5E',
-              fontWeight: 700,
-              fontSize: '0.9rem',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)';
-              e.currentTarget.style.color = '#fff';
-              e.currentTarget.style.borderColor = 'transparent';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = '#F43F5E';
-              e.currentTarget.style.borderColor = 'rgba(244,63,94,0.3)';
-            }}
+        {showViewAll && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginTop: '3rem' }}
           >
-            View all Projects
-          </button>
-        </motion.div>
+            <Link
+              to="/projects"
+              style={{
+                display: 'inline-block',
+                padding: '12px 36px',
+                border: '1px solid rgba(244, 63, 94, 0.2)',
+                borderRadius: '9999px',
+                background: '#fff',
+                color: '#F43F5E',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)';
+                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.borderColor = 'transparent';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.color = '#F43F5E';
+                e.currentTarget.style.borderColor = 'rgba(244, 63, 94, 0.2)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              View all Projects
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );

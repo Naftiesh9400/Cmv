@@ -4,7 +4,7 @@ import ContactSection from '../components/ContactSection';
 const Blog = () => {
   return (
     <div style={{ paddingTop: '2rem' }}>
-      <BlogSection />
+      <BlogSection showViewAll={false} />
       <ContactSection />
     </div>
   );

@@ -84,7 +84,7 @@ const StatsSection = () => {
         background: '#fff',
         borderTop: '1px solid #f0f0f0',
         borderBottom: '1px solid #f0f0f0',
-        padding: '3.5rem 0',
+        padding: '2.5rem 0',
       }}
     >
       <div className="container">

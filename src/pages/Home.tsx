@@ -19,7 +19,7 @@ const Home = () => {
       <ProjectsSection />
       <TestimonialsSection />
       <BlogSection />
-      <ContactSection showContactInfo={false} />
+      <ContactSection showContactInfo={false} showMap={false} />
     </>
   );
 };

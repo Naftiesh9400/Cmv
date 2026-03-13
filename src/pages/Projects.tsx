@@ -4,7 +4,7 @@ import ContactSection from '../components/ContactSection';
 const Projects = () => {
   return (
     <div style={{ paddingTop: '2rem' }}>
-      <ProjectsSection />
+      <ProjectsSection showViewAll={false} />
       <ContactSection />
     </div>
   );

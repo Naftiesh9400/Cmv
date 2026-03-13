@@ -1,37 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import BlogConsulting from '../assets/blog_consulting.png';
-import BlogSecurity from '../assets/blog_security.png';
-import BlogCloud from '../assets/blog_cloud.png';
-import AvatarDavid from '../assets/avatar_david.png';
-import AvatarSarah from '../assets/avatar_sarah.png';
-import AvatarJames from '../assets/avatar_james.png';
+import { Link } from 'react-router-dom';
+import { posts } from '../data/blogData';
 
-const posts = [
-  {
-    img: BlogConsulting,
-    tags: ['IT', 'CONSULTING'],
-    title: 'Top Strategies for Effective IT Infrastructure Management',
-    desc: 'Discover proven techniques to streamline your IT operations, reduce overhead costs, and align technology with your long-term business objectives.',
-    author: { avatar: AvatarDavid, name: 'David Kumar', date: 'August 15, 2024' },
-  },
-  {
-    img: BlogSecurity,
-    tags: ['SECURITY', 'TECH'],
-    title: 'The Future of Cybersecurity: Emerging Threats to Watch in 2025',
-    desc: 'Explore the cutting-edge threat landscape and trends shaping modern security, including AI-driven attacks, zero-trust architecture, and cloud vulnerabilities.',
-    author: { avatar: AvatarSarah, name: 'Sarah Mitchell', date: 'December 5, 2024' },
-  },
-  {
-    img: BlogCloud,
-    tags: ['CLOUD', 'DIGITAL'],
-    title: 'Cloud Migration Done Right: A Step-by-Step Guide for Enterprises',
-    desc: 'Learn how to plan and execute a seamless cloud migration with zero downtime, ensuring business continuity and maximizing ROI from day one.',
-    author: { avatar: AvatarJames, name: 'James Osei', date: 'January 22, 2025' },
-  },
-];
-
-const BlogSection = () => {
+const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   const [page, setPage] = useState(0);
   const total = posts.length;
 
@@ -44,11 +16,11 @@ const BlogSection = () => {
   return (
     <section
       id="blog"
-      style={{ padding: '6rem 0', background: '#fff', overflow: 'hidden' }}
+      style={{ padding: '4rem 0', background: '#fff', overflow: 'hidden' }}
     >
       <div className="container">
         {/* Center Header */}
-        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem' }}>
+        <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.5rem' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,14 +88,11 @@ const BlogSection = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.35 }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '2rem',
-            }}
+            className="responsive-grid-3"
           >
             {visible.map((post, i) => (
-              <div
+              <Link
+                to={`/blog/${post.slug}`}
                 key={i}
                 style={{
                   borderRadius: '1.25rem',
@@ -133,14 +102,15 @@ const BlogSection = () => {
                   boxShadow: '0 4px 16px rgba(0,0,0,0.05)',
                   transition: 'box-shadow 0.3s, transform 0.3s',
                   cursor: 'pointer',
+                  textDecoration: 'none',
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 40px rgba(0,0,0,0.1)';
-                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-5px)';
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 16px 40px rgba(0,0,0,0.1)';
+                  (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-5px)';
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 16px rgba(0,0,0,0.05)';
-                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 16px rgba(0,0,0,0.05)';
+                  (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
                 }}
               >
                 {/* Image with overlaid tags */}
@@ -222,7 +192,7 @@ const BlogSection = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </motion.div>
         </AnimatePresence>
@@ -232,45 +202,82 @@ const BlogSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ display: 'flex', gap: '15px', justifyContent: 'center', alignItems: 'center', marginTop: '4rem' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems: 'center', marginTop: '3.5rem' }}
         >
-          {[prev, next].map((fn, i) => (
-            <button
-              key={i}
-              onClick={fn}
+          {/* Slider Controls */}
+          <div style={{ display: 'flex', gap: '15px' }}>
+            {[prev, next].map((fn, i) => (
+              <button
+                key={i}
+                onClick={fn}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  border: i === 0 ? '1.5px solid #e5e7eb' : 'none',
+                  background: i === 0 ? '#fff' : 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)',
+                  color: i === 0 ? '#374151' : '#fff',
+                  fontSize: '1.25rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: i === 1 ? '0 4px 14px rgba(244,63,94,0.3)' : '0 2px 6px rgba(0,0,0,0.06)',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  if (i === 0) {
+                    e.currentTarget.style.background = '#f9fafb';
+                  } else {
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (i === 0) {
+                    e.currentTarget.style.background = '#fff';
+                  } else {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }
+                }}
+              >
+                {i === 0 ? '‹' : '›'}
+              </button>
+            ))}
+          </div>
+
+          {/* View More Button */}
+          {showViewAll && (
+            <Link
+              to="/blog"
               style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                border: i === 0 ? '1.5px solid #e5e7eb' : 'none',
-                background: i === 0 ? '#fff' : 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)',
-                color: i === 0 ? '#374151' : '#fff',
-                fontSize: '1.25rem',
+                padding: '10px 40px',
+                border: '1px solid rgba(244, 63, 94, 0.2)',
+                borderRadius: '9999px',
+                background: '#fff',
+                color: '#F43F5E',
+                fontWeight: 700,
+                fontSize: '0.85rem',
                 cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: i === 1 ? '0 4px 14px rgba(244,63,94,0.3)' : '0 2px 6px rgba(0,0,0,0.06)',
-                transition: 'all 0.25s ease',
+                letterSpacing: '0.02em',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
               }}
               onMouseEnter={(e) => {
-                if (i === 0) {
-                  e.currentTarget.style.background = '#f9fafb';
-                } else {
-                  e.currentTarget.style.transform = 'scale(1.05)';
-                }
+                e.currentTarget.style.background = 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)';
+                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.borderColor = 'transparent';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                if (i === 0) {
-                  e.currentTarget.style.background = '#fff';
-                } else {
-                  e.currentTarget.style.transform = 'scale(1)';
-                }
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.color = '#F43F5E';
+                e.currentTarget.style.borderColor = 'rgba(244, 63, 94, 0.2)';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              {i === 0 ? '‹' : '›'}
-            </button>
-          ))}
+              Read All Articles
+            </Link>
+          )}
         </motion.div>
       </div>
     </section>
