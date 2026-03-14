@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../assets/qwq 2.png';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Service', path: '/service' },
+    { name: 'Services', path: '/services' },
+    { name: 'Solutions', path: '/solutions' },
+    { name: 'Technologies', path: '/technologies' },
+    { name: 'Industries', path: '/industry' },
+    { 
+      name: 'Who We Are', 
+      path: '/about-us',
+      submenu: [
+        { name: 'About Us', path: '/about-us' },
+        { name: 'Leadership', path: '/leadership' },
+        { name: 'Clients', path: '/our-clients' },
+        { name: 'Partners', path: '/our-partners' },
+      ]
+    },
+    { name: 'Success Stories', path: '/case-study' },
     { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' }
   ];
 
   useEffect(() => {
@@ -62,17 +74,97 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`nav-pill ${location.pathname === link.path ? 'active' : ''}`}
-                onMouseEnter={(e) => e.currentTarget.classList.add('active')}
-                onMouseLeave={(e) => { if (location.pathname !== link.path) e.currentTarget.classList.remove('active'); }}
+              <div 
+                key={link.name} 
+                className="relative"
+                onMouseEnter={() => link.submenu && setActiveSubmenu(link.name)}
+                onMouseLeave={() => link.submenu && setActiveSubmenu(null)}
               >
-                {link.name}
-              </Link>
+                <Link
+                  to={link.path}
+                  className={`nav-pill flex items-center gap-1 ${
+                    (location.pathname === link.path || (link.submenu?.some(sub => location.pathname === sub.path))) ? 'active' : ''
+                  }`}
+                  onMouseEnter={(e) => e.currentTarget.classList.add('active')}
+                  onMouseLeave={(e) => { 
+                    if (location.pathname !== link.path && !link.submenu?.some(sub => location.pathname === sub.path)) {
+                      e.currentTarget.classList.remove('active'); 
+                    }
+                  }}
+                  style={{ whiteSpace: 'nowrap', fontSize: '0.9rem' }}
+                >
+                  {link.name}
+                  {link.submenu && (
+                    <ChevronDown 
+                      size={14} 
+                      style={{ 
+                        transform: activeSubmenu === link.name ? 'rotate(180deg)' : 'rotate(0)',
+                        transition: 'transform 0.3s ease'
+                      }} 
+                    />
+                  )}
+                </Link>
+
+                {/* Desktop Dropdown */}
+                <AnimatePresence>
+                  {link.submenu && activeSubmenu === link.name && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      style={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        paddingTop: '0.75rem',
+                        zIndex: 1000,
+                        minWidth: '200px',
+                      }}
+                    >
+                      <div style={{
+                        background: '#fff',
+                        borderRadius: '12px',
+                        padding: '0.5rem',
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+                        border: '1px solid rgba(0,0,0,0.05)',
+                      }}>
+                        {link.submenu.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            to={sub.path}
+                            className="flex items-center"
+                            style={{
+                              padding: '10px 16px',
+                              borderRadius: '8px',
+                              color: location.pathname === sub.path ? '#F43F5E' : '#475569',
+                              fontSize: '0.9rem',
+                              fontWeight: 500,
+                              transition: 'all 0.2s ease',
+                              textDecoration: 'none',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.background = 'rgba(244, 63, 94, 0.05)';
+                              e.currentTarget.style.color = '#F43F5E';
+                            }}
+                            onMouseLeave={(e) => {
+                              if (location.pathname !== sub.path) {
+                                e.currentTarget.style.background = 'transparent';
+                                e.currentTarget.style.color = '#475569';
+                              }
+                            }}
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </nav>
 
@@ -165,48 +257,107 @@ const Header: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                padding: '2rem 2.5rem',
-                gap: '2.5rem',
+                padding: '2rem 1.5rem',
+                gap: '1.5rem',
                 flex: 1,
               }}
             >
               {navLinks.map((link, idx) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    delay: 0.2 + (idx * 0.08),
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-                >
-                  {location.pathname === link.path && (
-                    <motion.div 
-                      layoutId="active-dot"
-                      style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F43F5E' }} 
-                    />
-                  )}
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                      fontSize: '2.5rem',
-                      fontWeight: 700,
-                      color: location.pathname === link.path ? '#0f172a' : '#64748b',
-                      textDecoration: 'none',
-                      fontFamily: 'Outfit, sans-serif',
-                      lineHeight: 1.1,
-                      transition: 'all 0.3s ease',
-                      letterSpacing: '-0.02em'
+                <div key={link.name}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      delay: 0.1 + (idx * 0.05),
+                      type: "spring",
+                      stiffness: 100
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#0f172a')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = location.pathname === link.path ? '#0f172a' : '#64748b')}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+                    onClick={() => {
+                      if (link.submenu) {
+                        setActiveSubmenu(activeSubmenu === link.name ? null : link.name);
+                      } else {
+                        setIsOpen(false);
+                      }
+                    }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      {location.pathname === link.path && !link.submenu && (
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F43F5E' }} />
+                      )}
+                      {link.submenu ? (
+                        <span
+                          style={{
+                            fontSize: '1.75rem',
+                            fontWeight: 700,
+                            color: activeSubmenu === link.name || link.submenu.some(s => location.pathname === s.path) ? '#0f172a' : '#64748b',
+                            fontFamily: 'Outfit, sans-serif',
+                            lineHeight: 1.1,
+                          }}
+                        >
+                          {link.name}
+                        </span>
+                      ) : (
+                        <Link
+                          to={link.path}
+                          style={{
+                            fontSize: '1.75rem',
+                            fontWeight: 700,
+                            color: location.pathname === link.path ? '#0f172a' : '#64748b',
+                            textDecoration: 'none',
+                            fontFamily: 'Outfit, sans-serif',
+                            lineHeight: 1.1,
+                          }}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </div>
+                    
+                    {link.submenu && (
+                      <ChevronDown 
+                        size={24} 
+                        style={{ 
+                          color: '#64748b',
+                          transform: activeSubmenu === link.name ? 'rotate(180deg)' : 'rotate(0)',
+                          transition: 'transform 0.3s ease'
+                        }} 
+                      />
+                    )}
+                  </motion.div>
+
+                  {/* Mobile Submenu Items */}
+                  <AnimatePresence>
+                    {link.submenu && activeSubmenu === link.name && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        style={{ overflow: 'hidden', paddingLeft: '1.5rem' }}
+                      >
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingTop: '1.25rem', paddingBottom: '0.5rem' }}>
+                          {link.submenu.map((sub) => (
+                            <Link
+                              key={sub.name}
+                              to={sub.path}
+                              onClick={() => setIsOpen(false)}
+                              style={{
+                                fontSize: '1.25rem',
+                                fontWeight: 600,
+                                color: location.pathname === sub.path ? '#F43F5E' : '#64748b',
+                                textDecoration: 'none',
+                                fontFamily: 'Outfit, sans-serif',
+                              }}
+                            >
+                              {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ))}
             </nav>
 

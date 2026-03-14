@@ -26,8 +26,8 @@ const ContactSection = ({
                 gap: '8px',
                 padding: '6px 20px',
                 borderRadius: '9999px',
-                background: 'linear-gradient(90deg, rgba(244,63,94,0.1), rgba(251,146,60,0.1))',
-                border: '1px solid rgba(244,63,94,0.2)',
+                background: 'rgba(255, 77, 0, 0.08)',
+                border: '1px solid rgba(255, 77, 0, 0.2)',
                 marginBottom: '1.25rem',
               }}
             >
@@ -36,10 +36,10 @@ const ContactSection = ({
                   width: '10px',
                   height: '10px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #F43F5E, #FB923C)',
+                  background: 'linear-gradient(135deg, #ff4d00, #ff8c00)',
                 }}
               />
-              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#F43F5E', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ff4d00', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 Contact Us
               </span>
             </div>
@@ -58,9 +58,12 @@ const ContactSection = ({
               Ready to Transform{' '}
               <span
                 style={{
-                  background: 'linear-gradient(90deg, #F43F5E 0%, #FB923C 100%)',
+                  backgroundImage: 'linear-gradient(90deg, #ff4d00 0%, #ff8c00 100%)',
                   WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  color: 'transparent',
+                  display: 'inline-block',
                 }}
               >
                 Your IT?
@@ -121,7 +124,7 @@ const ContactSection = ({
                     outline: 'none',
                     transition: 'border-color 0.2s',
                   }}
-                  onFocus={(e) => (e.target.style.borderColor = '#2563EB')}
+                  onFocus={(e) => (e.target.style.borderColor = '#ff4d00')}
                   onBlur={(e) => (e.target.style.borderColor = '#e5e7eb')}
                 />
               </div>
@@ -185,7 +188,7 @@ const ContactSection = ({
                     outline: 'none',
                     transition: 'border-color 0.2s',
                   }}
-                  onFocus={(e) => (e.target.style.borderColor = '#2563EB')}
+                  onFocus={(e) => (e.target.style.borderColor = '#ff4d00')}
                   onBlur={(e) => (e.target.style.borderColor = '#e5e7eb')}
                 />
               </div>
@@ -207,7 +210,7 @@ const ContactSection = ({
                     transition: 'border-color 0.2s',
                     color: '#374151',
                   }}
-                  onFocus={(e) => (e.target.style.borderColor = '#2563EB')}
+                  onFocus={(e) => (e.target.style.borderColor = '#ff4d00')}
                   onBlur={(e) => (e.target.style.borderColor = '#e5e7eb')}
                 >
                   <option value="" disabled selected>Select a Service</option>
@@ -229,23 +232,23 @@ const ContactSection = ({
                   padding: '16px',
                   borderRadius: '8px',
                   border: 'none',
-                  background: 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)',
+                  background: 'linear-gradient(135deg, #ff4d00 0%, #ff8c00 100%)',
                   color: '#fff',
                   fontSize: '1rem',
                   fontWeight: 700,
                   cursor: 'pointer',
                   textTransform: 'uppercase',
                   letterSpacing: '0.05em',
-                  boxShadow: '0 4px 15px rgba(244,63,94,0.3)',
+                  boxShadow: '0 4px 15px rgba(255, 77, 0, 0.3)',
                   transition: 'transform 0.2s, box-shadow 0.2s',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(244,63,94,0.4)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(255, 77, 0, 0.4)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(244,63,94,0.3)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(255, 77, 0, 0.3)';
                 }}
               >
                 Get Free Consultation

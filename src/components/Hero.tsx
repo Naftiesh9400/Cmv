@@ -52,44 +52,37 @@ const Hero: React.FC = () => {
           className="z-20"
         >
           <motion.h1
-            className="text-5xl sm:text-6xl lg:text-8xl font-bold font-outfit leading-[1.05] mb-10 text-navy"
+            className="text-5xl sm:text-6xl lg:text-[5.5rem] font-bold font-outfit leading-[1.05] mb-8 text-navy tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Top Managed<br />
-            Provider &<br />
-            <span className="text-primary">IT Services</span>
+            Build, Scale & Innovate <br className="hidden md:block" />
+            With <span className="gradient-text">Modern Software,</span> <br className="hidden xl:block" />
+            Cloud & Data Solutions
           </motion.h1>
 
           <motion.p
-            className="text-text-muted text-xl md:text-2xl mb-12 max-w-xl leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-slate-500 mb-10 max-w-[600px] leading-[1.7]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Strategic technology advice to help plan your future growth and modernize your enterprise.
+            CMV Technologies International is a trusted IT consulting & software development company helping businesses build scalable digital products through enterprise development, AI automation, cloud-native architecture, and advanced data engineering.
           </motion.p>
 
           <motion.div
-            className="flex flex-row items-center justify-start gap-4 sm:gap-6 md:gap-8"
+            className="flex flex-row items-center justify-start"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
             <Link 
               to="/contact" 
-              className="btn btn-primary shadow-lg group whitespace-nowrap !px-5 sm:!px-9" 
-              style={{ textDecoration: 'none' }}
+              className="btn btn-primary shadow-lg group whitespace-nowrap !px-8 !py-4 text-[0.95rem] tracking-wide" 
+              style={{ textDecoration: 'none', borderRadius: '50px' }}
             >
-              Get Started <span className="ml-2 group-hover:translate-x-1 transition-transform"></span>
-            </Link>
-            <Link 
-              to="/about" 
-              className="btn btn-outline whitespace-nowrap !px-5 sm:!px-9" 
-              style={{ textDecoration: 'none' }}
-            >
-              Learn More
+              GET A FREE CONSULTATION <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
             </Link>
           </motion.div>
 

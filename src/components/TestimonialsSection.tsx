@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import AvatarDavid from '../assets/avatar_david.png';
 import AvatarSarah from '../assets/avatar_sarah.png';
 import AvatarJames from '../assets/avatar_james.png';
@@ -9,58 +9,69 @@ const testimonials = [
   {
     avatar: AvatarDavid,
     quote:
-      '"CMV Technologies transformed our entire cloud infrastructure. Their team was professional, fast, and incredibly knowledgeable. We saw immediate performance gains and a 40% reduction in downtime. Highly recommended!"',
-    name: 'David Kumar',
-    role: 'CEO, NexaTech',
+      "Their ability to capture our brand essence in every project is unparalleled - an invaluable creative collaborator.",
+    name: 'Isabella Rodriguez',
+    role: 'CEO & Co-founder',
   },
   {
     avatar: AvatarSarah,
     quote:
-      '"The cybersecurity overhaul CMV delivered gave us full confidence in our data protection. Their experts were thorough, communicative, and delivered on time. An outstanding team to work with."',
-    name: 'Sarah Mitchell',
-    role: 'CTO, FinCore Solutions',
+      "Creative geniuses who listen, understand, and craft captivating visuals - an agency that truly understands our needs.",
+    name: 'Gabrielle Williams',
+    role: 'Design Director',
   },
   {
     avatar: AvatarJames,
     quote:
-      '"CMV built our custom CRM from scratch and integrated it seamlessly with our existing systems. Our sales efficiency jumped by 45% within the first quarter. Exceptional work!"',
-    name: 'James Osei',
-    role: 'Operations Director, LogiLink',
+      "Exceeded our expectations with innovative designs that brought our vision to life - a truly remarkable creative agency.",
+    name: 'Samantha Johnson',
+    role: 'Marketing Head',
   },
   {
     avatar: AvatarPriya,
     quote:
-      '"Migrating our sensitive patient data was a daunting task but CMV handled it with precision and zero downtime. Their HIPAA compliance knowledge was impressive. Truly a reliable IT partner."',
+      "The cybersecurity overhaul delivered gave us full confidence. Their experts were thorough, communicative, and timely.",
     name: 'Priya Sharma',
-    role: 'IT Head, MedCare Network',
+    role: 'IT Director',
+  },
+  {
+     avatar: AvatarDavid,
+     quote:
+       "CMV built our custom CRM from scratch and integrated it seamlessly. Our efficiency jumped by 45% quickly.",
+     name: 'James Osei',
+     role: 'Operations Head',
+   },
+   {
+    avatar: AvatarSarah,
+    quote:
+      "A level of professionalism and technical expertise that is hard to find. They truly become part of your team.",
+    name: 'Michael Chen',
+    role: 'Product Manager',
   },
 ];
 
 const TestimonialsSection = () => {
-  const [active, setActive] = useState(0);
-
-  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
-  const next = () => setActive((a) => (a + 1) % testimonials.length);
-
-  const current = testimonials[active];
+  const [isPaused, setIsPaused] = useState(false);
+  
+  // Double the testimonials for infinite scroll effect
+  const doubledTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section
       style={{
         padding: '3rem 0',
-        background: '#f8faff',
+        background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
         overflow: 'hidden',
       }}
     >
-      <div className="container" style={{ maxWidth: '820px' }}>
-        {/* Center Header */}
+      <div className="container" style={{ textAlign: 'center' }}>
+        {/* Header content */}
         <motion.div
-           initial={{ opacity: 0, y: 24 }}
+           initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 2.5rem' }}
+           style={{ marginBottom: '3rem' }}
         >
-          {/* Badge */}
           <div
             style={{
               display: 'inline-flex',
@@ -68,229 +79,144 @@ const TestimonialsSection = () => {
               gap: '8px',
               padding: '6px 20px',
               borderRadius: '9999px',
-              background: 'linear-gradient(90deg, rgba(244,63,94,0.1), rgba(251,146,60,0.1))',
-              border: '1px solid rgba(244,63,94,0.2)',
-              marginBottom: '1.25rem',
+              background: 'rgba(255, 77, 0, 0.08)',
+              border: '1px solid rgba(255, 77, 0, 0.15)',
+              marginBottom: '1rem',
             }}
           >
             <div
               style={{
-                width: '10px',
-                height: '10px',
+                width: '8px',
+                height: '8px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #F43F5E, #FB923C)',
+                background: '#ff4d00',
               }}
             />
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#F43F5E', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#ff4d00', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               Testimonials
             </span>
           </div>
           <h2
             style={{
-              fontSize: 'clamp(2rem, 4.5vw, 3rem)',
+              fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
               fontWeight: 800,
               color: '#0f172a',
               fontFamily: 'Outfit, sans-serif',
-              marginBottom: '1rem',
-              lineHeight: 1.15,
-              textTransform: 'uppercase',
-              letterSpacing: '-0.01em',
+              marginBottom: '0.5rem',
+              lineHeight: 1.1,
             }}
           >
-            What Our{' '}
-            <span
-              style={{
-                background: 'linear-gradient(90deg, #F43F5E 0%, #FB923C 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              Clients Say.
+            Trusted by the world's <br />
+            <span className="gradient-text">
+              fastest growing teams.
             </span>
           </h2>
-          <p style={{ color: '#6b7280', lineHeight: 1.75, fontSize: '0.975rem', margin: '0 0 2rem' }}>
-            We're proud to partner with businesses that value innovation, reliability, and results. Here's what some of our clients have to say about working with CMV Technologies.
-          </p>
         </motion.div>
 
-        {/* Avatar Row */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '12px',
-            marginBottom: '2.5rem',
+        {/* Infinite Carousel Container */}
+        <div 
+          style={{ 
+            position: 'relative', 
+            width: '100%',
+            maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
           }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          {testimonials.map((t, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              style={{
-                padding: 0,
-                border: 'none',
-                background: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <img
-                src={t.avatar}
-                alt={t.name}
-                style={{
-                  width: i === active ? '72px' : '52px',
-                  height: i === active ? '72px' : '52px',
-                  borderRadius: '50%',
-                  objectFit: 'cover',
-                  objectPosition: 'top',
-                  border: i === active ? '3px solid #2563EB' : '3px solid transparent',
-                  opacity: i === active ? 1 : 0.55,
-                  transition: 'all 0.3s ease',
-                  boxShadow: i === active ? '0 4px 16px rgba(37,99,235,0.3)' : 'none',
-                }}
-              />
-            </button>
-          ))}
-        </div>
-
-        {/* Quote */}
-        <div style={{ position: 'relative', padding: '0 3rem', minHeight: '160px', textAlign: 'center' }}>
-          {/* Left Arrow */}
-          <button
-            onClick={prev}
+          <motion.div
+            animate={{
+              x: isPaused ? undefined : ['0%', '-50%'],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: 'loop',
+                duration: 40,
+                ease: 'linear',
+              },
+            }}
             style={{
-              position: 'absolute',
-              left: '-12px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              border: '1.5px solid #e5e7eb',
-              background: '#fff',
-              cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-              color: '#374151',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#1E293B';
-              e.currentTarget.style.color = '#fff';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#fff';
-              e.currentTarget.style.color = '#374151';
+              gap: '2rem',
+              width: 'max-content',
+              padding: '1rem 0',
             }}
           >
-            ‹
-          </button>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p
+            {doubledTestimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.02, y: -5 }}
                 style={{
-                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
-                  color: '#374151',
-                  lineHeight: 1.85,
-                  fontStyle: 'italic',
-                  margin: '0 0 2rem',
+                  width: 'min(320px, 85vw)',
+                  background: '#ffffff',
+                  borderRadius: '24px',
+                  padding: '2rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  border: '1px solid #f1f5f9',
+                  boxShadow: '0 10px 40px -10px rgba(0,0,0,0.05)',
+                  transition: 'background 0.3s ease, border-color 0.3s ease',
+                  flexShrink: 0,
                 }}
               >
-                {current.quote}
-              </p>
-              <div>
-                <span
-                  style={{
-                    fontFamily: 'Outfit, sans-serif',
-                    fontSize: '1.25rem',
-                    fontWeight: 800,
-                    color: '#0f172a',
-                    marginRight: '8px',
-                  }}
-                >
-                  {current.name}
-                </span>
-                <span style={{ fontSize: '0.9rem', color: '#6b7280', fontWeight: 500 }}>
-                  {current.role}
-                </span>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                {/* Orange Quote Icon */}
+                <div style={{ color: '#ff4d00', marginBottom: '1.25rem', opacity: 0.9 }}>
+                  <svg width="30" height="23" viewBox="0 0 34 26" fill="currentColor">
+                    <path d="M0 13C0 5.8203 5.8203 0 13 0V6.5C9.41015 6.5 6.5 9.41015 6.5 13H13V26H0V13ZM21 13C21 5.8203 26.8203 0 34 0V6.5C30.4102 6.5 27.5 9.41015 27.5 13H34V26H21V13Z" />
+                  </svg>
+                </div>
 
-          {/* Right Arrow */}
-          <button
-            onClick={next}
-            style={{
-              position: 'absolute',
-              right: '-12px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              border: 'none',
-              background: 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-              color: '#fff',
-              boxShadow: '0 4px 12px rgba(244,63,94,0.35)',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(-50%) scale(1)'; }}
-          >
-            ›
-          </button>
+                <p style={{
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  color: '#334155',
+                  lineHeight: 1.6,
+                  margin: '0 0 1.5rem',
+                  flex: 1
+                }}>
+                  "{t.quote}"
+                </p>
+
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{ position: 'relative' }}>
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      style={{
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        border: '3px solid #f1f5f9'
+                      }}
+                    />
+                    <div style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      right: 0,
+                      width: '16px',
+                      height: '16px',
+                      background: '#10b981',
+                      border: '2px solid white',
+                      borderRadius: '50%'
+                    }} />
+                  </div>
+                  <div>
+                    <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: '#0f172a', fontFamily: 'Outfit, sans-serif' }}>
+                      {t.name}
+                    </h4>
+                    <p style={{ margin: 0, fontSize: '0.85rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.01em' }}>
+                      {t.role}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-
-        {/* --- Bottom Button --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginTop: '3rem' }}
-        >
-          <button
-            style={{
-              padding: '12px 36px',
-              border: '1.5px solid rgba(244,63,94,0.3)',
-              borderRadius: '9999px',
-              background: 'transparent',
-              color: '#F43F5E',
-              fontWeight: 700,
-              fontSize: '0.9rem',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)';
-              e.currentTarget.style.color = '#fff';
-              e.currentTarget.style.borderColor = 'transparent';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.color = '#F43F5E';
-              e.currentTarget.style.borderColor = 'rgba(244,63,94,0.3)';
-            }}
-          >
-            Review us
-          </button>
-        </motion.div>
       </div>
     </section>
   );

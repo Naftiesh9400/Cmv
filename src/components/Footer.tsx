@@ -36,10 +36,10 @@ const Footer = () => {
           className="newsletter-card"
         >
           {/* Subtle Decorative Icon for background */}
-          <Mail size={120} strokeWidth={0.5} style={{ position: 'absolute', right: '-20px', bottom: '-30px', color: 'rgba(244,63,94,0.03)', transform: 'rotate(-15deg)', pointerEvents: 'none' }} />
+          <Mail size={120} strokeWidth={0.5} style={{ position: 'absolute', right: '-20px', bottom: '-30px', color: 'rgba(255, 77, 0, 0.03)', transform: 'rotate(-15deg)', pointerEvents: 'none' }} />
           
           <div style={{ flex: '2 1 400px', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <div style={{ padding: '12px', background: 'rgba(244,63,94,0.05)', borderRadius: '12px', color: '#F43F5E' }}>
+            <div style={{ padding: '12px', background: 'rgba(255, 77, 0, 0.05)', borderRadius: '12px', color: '#ff4d00' }}>
               <Mail size={24} />
             </div>
             <div>
@@ -76,7 +76,7 @@ const Footer = () => {
                 fontSize: '0.9rem',
                 minWidth: '0'
               }}
-              onFocus={(e) => (e.target.style.borderColor = '#F43F5E')}
+              onFocus={(e) => (e.target.style.borderColor = '#ff4d00')}
               onBlur={(e) => (e.target.style.borderColor = '#e2e8f0')}
             />
             <button
@@ -84,7 +84,7 @@ const Footer = () => {
                 padding: '12px 28px',
                 borderRadius: '9999px',
                 border: 'none',
-                background: 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)',
+                background: 'linear-gradient(135deg, #ff4d00 0%, #ff8c00 100%)',
                 color: '#fff',
                 fontSize: '0.9rem',
                 fontWeight: 700,
@@ -119,7 +119,6 @@ const Footer = () => {
             <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.9rem', marginBottom: '1.5rem' }}>
               CMV Technologies transforms businesses with smart, secure, and scalable IT solutions. Your reliable global technology partner.
             </p>
-            {/* Social Icons (Placeholders) */}
             {/* Social Icons */}
             <div style={{ display: 'flex', gap: '12px' }}>
               {[
@@ -170,7 +169,7 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.path} style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#F43F5E'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
+                  <Link to={link.path} style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
                     {link.name}
                   </Link>
                 </li>
@@ -184,7 +183,7 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Disclaimer'].map((link) => (
                 <li key={link}>
-                  <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#F43F5E'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
+                  <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
                     {link}
                   </a>
                 </li>
@@ -201,8 +200,8 @@ const Footer = () => {
                   width: '36px',
                   height: '36px',
                   borderRadius: '10px',
-                  background: 'rgba(244,63,94,0.05)',
-                  color: '#F43F5E',
+                  background: 'rgba(255, 77, 0, 0.05)',
+                  color: '#ff4d00',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -221,8 +220,8 @@ const Footer = () => {
                   width: '36px',
                   height: '36px',
                   borderRadius: '10px',
-                  background: 'rgba(244,63,94,0.05)',
-                  color: '#F43F5E',
+                  background: 'rgba(255, 77, 0, 0.05)',
+                  color: '#ff4d00',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -230,7 +229,7 @@ const Footer = () => {
                 }}>
                   <Mail size={18} />
                 </div>
-                <a href="mailto:help@cmv-global.com" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#F43F5E'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
+                <a href="mailto:help@cmv-global.com" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
                   help@cmv-global.com
                 </a>
               </li>
@@ -239,8 +238,8 @@ const Footer = () => {
                   width: '36px',
                   height: '36px',
                   borderRadius: '10px',
-                  background: 'rgba(244,63,94,0.05)',
-                  color: '#F43F5E',
+                  background: 'rgba(255, 77, 0, 0.05)',
+                  color: '#ff4d00',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -248,7 +247,7 @@ const Footer = () => {
                 }}>
                   <Phone size={18} />
                 </div>
-                <a href="tel:+15551234567" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#F43F5E'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
+                <a href="tel:+15551234567" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
                   +1 (555) 123-4567
                 </a>
               </li>

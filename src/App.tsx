@@ -16,14 +16,20 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
+      <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-          <Route path="/service" element={<Services />} />
-          <Route path="/service/:categorySlug" element={<ServiceDetail />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/leadership" element={<About />} />
+          <Route path="/our-clients" element={<About />} />
+          <Route path="/our-partners" element={<About />} />
+          <Route path="/case-study" element={<Projects />} />
+          <Route path="/case-study/:slug" element={<ProjectDetail />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:categorySlug" element={<ServiceDetail />} />
+          <Route path="/solutions" element={<Services />} />
+          <Route path="/technologies" element={<Services />} />
+          <Route path="/industry" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />

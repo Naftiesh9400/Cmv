@@ -48,13 +48,14 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                 position: 'absolute',
                 bottom: '20px',
                 left: '20px',
-                background: 'rgba(220, 235, 210, 0.95)',
+                background: 'rgba(255, 77, 0, 0.1)',
                 backdropFilter: 'blur(8px)',
                 padding: '10px 24px',
                 borderRadius: '9999px',
                 fontSize: '0.9rem',
                 fontWeight: 700,
-                color: '#2d4a22',
+                color: '#ff4d00',
+                border: '1px solid rgba(255, 77, 0, 0.2)',
                 boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
               }}
             >
@@ -155,6 +156,9 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
           </motion.div>
         </div>
 
+
+      </div>
+
         {/* --- Bottom Button --- */}
         {showViewAll && (
           <motion.div
@@ -168,10 +172,10 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
               style={{
                 display: 'inline-block',
                 padding: '12px 36px',
-                border: '1px solid rgba(244, 63, 94, 0.2)',
+                border: '1px solid rgba(255, 77, 0, 0.2)',
                 borderRadius: '9999px',
                 background: '#fff',
-                color: '#F43F5E',
+                color: '#ff4d00',
                 fontWeight: 700,
                 fontSize: '0.9rem',
                 cursor: 'pointer',
@@ -180,15 +184,15 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                 transition: 'all 0.3s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #F43F5E 0%, #FB923C 100%)';
+                e.currentTarget.style.background = 'linear-gradient(135deg, #ff4d00 0%, #ff8c00 100%)';
                 e.currentTarget.style.color = '#fff';
                 e.currentTarget.style.borderColor = 'transparent';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = '#fff';
-                e.currentTarget.style.color = '#F43F5E';
-                e.currentTarget.style.borderColor = 'rgba(244, 63, 94, 0.2)';
+                e.currentTarget.style.color = '#ff4d00';
+                e.currentTarget.style.borderColor = 'rgba(255, 77, 0, 0.2)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -196,7 +200,6 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
             </Link>
           </motion.div>
         )}
-      </div>
     </section>
   );
 };

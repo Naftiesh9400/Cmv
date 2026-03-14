@@ -40,7 +40,7 @@ const FAQSection = () => {
             style={{ 
               fontSize: '0.85rem', 
               fontWeight: 800, 
-              color: '#F43F5E', 
+              color: '#ff4d00', 
               textTransform: 'uppercase', 
               letterSpacing: '0.1em',
               display: 'block',
@@ -111,7 +111,7 @@ const FAQSection = () => {
                 <span style={{ 
                   fontSize: '1.15rem', 
                   fontWeight: 700, 
-                  color: activeIndex === index ? '#F43F5E' : '#0f172a',
+                  color: activeIndex === index ? '#ff4d00' : '#0f172a',
                   transition: 'color 0.3s ease',
                   fontFamily: 'Outfit, sans-serif'
                 }}>
@@ -120,7 +120,7 @@ const FAQSection = () => {
                 <motion.div
                   animate={{ rotate: activeIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  style={{ color: activeIndex === index ? '#F43F5E' : '#94a3b8' }}
+                  style={{ color: activeIndex === index ? '#ff4d00' : '#94a3b8' }}
                 >
                   <ChevronDown size={20} />
                 </motion.div>
