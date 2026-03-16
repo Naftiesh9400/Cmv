@@ -187,7 +187,7 @@ const ContactSection = () => {
               </div>
 
               {/* Submit */}
-              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button
                   type="submit"
                   style={{
