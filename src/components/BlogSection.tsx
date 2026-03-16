@@ -89,7 +89,7 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
         </div>
 
         {/* ── Carousel Controls ── */}
-        <div style={{ 
+        <div className="blog-carousel-controls" style={{ 
           position: 'absolute', 
           top: '50%', 
           left: '0', 
@@ -265,6 +265,25 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
           </motion.div>
         </div>
 
+        {/* --- Pagination Dots --- */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '20px' }}>
+          {Array.from({ length: total - cardsToShow + 1 }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              style={{
+                width: currentIndex === idx ? '24px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                background: currentIndex === idx ? '#ff4d00' : '#e2e8f0',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+            />
+          ))}
+        </div>
+
         {/* --- Bottom Navigation --- */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', alignItems: 'center', marginTop: '3.5rem' }}>
 
@@ -317,6 +336,11 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
           <span style={{ color: '#ff4d00' }}>Real Impact • </span>
         </motion.div>
       </div>
+      <style>{`
+        @media (max-width: 1024px) {
+          .blog-carousel-controls { display: none !important; }
+        }
+      `}</style>
     </section>
   );
 };

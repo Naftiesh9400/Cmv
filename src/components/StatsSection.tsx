@@ -84,16 +84,16 @@ const StatsSection = () => {
         background: '#fff',
         borderTop: '1px solid #f0f0f0',
         borderBottom: '1px solid #f0f0f0',
-        padding: '1.5rem 0',
+        padding: '2rem 0',
       }}
     >
       <div className="container">
         <div
+          className="stats-grid"
           style={{
             display: 'flex',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '2rem',
+            justifyContent: 'center',
           }}
         >
           {stats.map((stat, i) => (
@@ -106,8 +106,26 @@ const StatsSection = () => {
           ))}
         </div>
       </div>
+      <style>{`
+        .stats-grid {
+          flex-direction: row;
+        }
+        @media (max-width: 767px) {
+          .stats-grid {
+            flex-direction: column;
+            gap: 2.5rem;
+          }
+          .stats-grid > div > div:last-child {
+            display: none !important;
+          }
+          .stats-grid > div {
+            width: 100%;
+          }
+        }
+      `}</style>
     </motion.section>
   );
 };
+
 
 export default StatsSection;

@@ -370,6 +370,7 @@ button {
 
 
 
+
 .gradient-text {
   background: linear-gradient(90deg, #ff4d00 0%, #ff8c00 100%);
   -webkit-background-clip: text;
@@ -378,3 +379,41 @@ button {
   color: #ff4d00;
   display: inline-block;
 }
+
+
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  padding: 3rem 0 2.5rem;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.footer-col-brand {
+  grid-column: span 2;
+}
+
+.footer-col-contact {
+  grid-column: span 1;
+}
+
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .footer-col-brand {
+    grid-column: span 1;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2.5rem 2rem;
+  }
+}
+
+
+

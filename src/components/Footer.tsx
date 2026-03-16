@@ -105,16 +105,10 @@ const Footer = () => {
       <div className="container">
 
         {/* ── Main Grid ── */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '2.5rem 3rem',
-          padding: '3rem 0 2.5rem',
-          borderBottom: '1px solid #f0f2f5',
-        }}>
+        <div className="footer-grid">
 
           {/* Col 1 — Brand */}
-          <div style={{ gridColumn: 'span 1' }}>
+          <div className="footer-col-brand">
             <Link to="/" aria-label="CMV Technologies — Go to homepage" style={{ display: 'inline-block', marginBottom: '1rem' }}>
               <img
                 src={Logo}
@@ -206,6 +200,7 @@ const Footer = () => {
           <address
             itemScope
             itemType="https://schema.org/LocalBusiness"
+            className="footer-col-contact"
             style={{ fontStyle: 'normal' }}
             aria-label="CMV Technologies contact information"
           >
@@ -263,17 +258,18 @@ const Footer = () => {
         {/* ── Bottom Bar ── */}
         <div style={{
           display: 'flex', flexWrap: 'wrap', alignItems: 'center',
-          justifyContent: 'space-between', gap: '0.75rem',
+          justifyContent: 'center', gap: '0.75rem',
           padding: '1.25rem 0',
           fontSize: '0.8rem', color: '#94a3b8',
+          textAlign: 'center',
         }}>
-          <p style={{ margin: 0 }}>
+          <p style={{ margin: 0, width: '100%' }}>
             © {new Date().getFullYear()}{' '}
             <strong style={{ color: '#64748b', fontWeight: 600 }}>CMV Technologies International Pvt. Ltd.</strong>
             {' '}All rights reserved.
           </p>
-
         </div>
+
       </div>
     </footer>
   );
