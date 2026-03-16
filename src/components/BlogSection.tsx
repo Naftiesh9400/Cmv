@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, MessageSquare, Clock, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { posts } from '../data/blogData';
 
 const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
