@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MessageSquare, Clock, ArrowRight } from 'lucide-react';
 import { posts } from '../data/blogData';
 
 const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
@@ -21,25 +21,19 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   }, []);
 
   const next = () => {
-    if (currentIndex < total - cardsToShow) {
-      setCurrentIndex(prev => prev + 1);
-    } else {
-      setCurrentIndex(0);
-    }
+    if (currentIndex < total - cardsToShow) setCurrentIndex(prev => prev + 1);
+    else setCurrentIndex(0);
   };
 
   const prev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
-    } else {
-      setCurrentIndex(total - cardsToShow);
-    }
+    if (currentIndex > 0) setCurrentIndex(prev => prev - 1);
+    else setCurrentIndex(total - cardsToShow);
   };
 
   return (
     <section
       id="blog"
-      style={{ padding: '3rem 0', background: '#fff', overflow: 'hidden', position: 'relative' }}
+      style={{ padding: '2rem 0', background: '#fff', overflow: 'hidden', position: 'relative' }}
     >
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Center Header */}
@@ -76,8 +70,8 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
             </div>
             <h1
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                fontWeight: 900,
+                fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)',
+                fontWeight: 800,
                 color: '#0f172a',
                 fontFamily: 'Outfit, sans-serif',
                 margin: '0 0 2rem',
@@ -92,6 +86,51 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
               </span>
             </h1>
           </motion.div>
+        </div>
+
+        {/* ── Carousel Controls ── */}
+        <div style={{ 
+          position: 'absolute', 
+          top: '50%', 
+          left: '0', 
+          right: '0', 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          padding: '0 20px', 
+          pointerEvents: 'none',
+          zIndex: 10,
+          transform: 'translateY(-50%)'
+        }}>
+          <button 
+            onClick={prev}
+            style={{ 
+              width: '50px', height: '50px', borderRadius: '50%', 
+              background: '#fff', border: '1px solid #e2e8f0', 
+              display: 'flex', alignItems: 'center', justifyContent: 'center', 
+              cursor: 'pointer', pointerEvents: 'auto',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              transition: 'all 0.3s ease', color: '#ff4d00'
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#ff4d00'; e.currentTarget.style.color = '#fff'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#ff4d00'; }}
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button 
+            onClick={next}
+            style={{ 
+              width: '50px', height: '50px', borderRadius: '50%', 
+              background: '#fff', border: '1px solid #e2e8f0', 
+              display: 'flex', alignItems: 'center', justifyContent: 'center', 
+              cursor: 'pointer', pointerEvents: 'auto',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              transition: 'all 0.3s ease', color: '#ff4d00'
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#ff4d00'; e.currentTarget.style.color = '#fff'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = '#ff4d00'; }}
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
 
         {/* ── Carousel Wrapper ── */}
@@ -228,60 +267,6 @@ const BlogSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
 
         {/* --- Bottom Navigation --- */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', alignItems: 'center', marginTop: '3.5rem' }}>
-          {/* Slider Controls */}
-          <div style={{ display: 'flex', gap: '15px' }}>
-            <button
-              onClick={prev}
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                border: '1.5px solid #e5e7eb',
-                background: '#fff',
-                color: '#374151',
-                fontSize: '1.25rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#ff4d00';
-                e.currentTarget.style.color = '#fff';
-                e.currentTarget.style.borderColor = '#ff4d00';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#fff';
-                e.currentTarget.style.color = '#374151';
-                e.currentTarget.style.borderColor = '#e5e7eb';
-              }}
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={next}
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '50%',
-                border: 'none',
-                background: 'linear-gradient(135deg, #ff4d00 0%, #ff8c00 100%)',
-                color: '#fff',
-                fontSize: '1.25rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 4px 14px rgba(255, 77, 0, 0.3)',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
 
           {/* View More Button */}
           {showViewAll && (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { serviceCategories } from '../data/serviceData';
 import Logo from '../assets/qwq 2.png';
 
 const Header: React.FC = () => {
@@ -12,8 +13,14 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
+    { 
+      name: 'Services', 
+      path: '/services',
+      submenu: serviceCategories.map(cat => ({
+        name: cat.title,
+        path: `/services/${cat.slug}`
+      }))
+    },
     { name: 'Solutions', path: '/solutions' },
     { name: 'Technologies', path: '/technologies' },
     { name: 'Industries', path: '/industry' },
@@ -128,9 +135,13 @@ const Header: React.FC = () => {
                       <div style={{
                         background: '#fff',
                         borderRadius: '12px',
-                        padding: '0.5rem',
-                        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+                        padding: '0.8rem',
+                        boxShadow: '0 10px 40px rgba(0,0,0,0.12)',
                         border: '1px solid rgba(0,0,0,0.05)',
+                        display: link.name === 'Services' ? 'grid' : 'block',
+                        gridTemplateColumns: link.name === 'Services' ? 'repeat(2, 1fr)' : 'none',
+                        gap: link.name === 'Services' ? '4px' : '0',
+                        minWidth: link.name === 'Services' ? '450px' : '220px',
                       }}>
                         {link.submenu.map((sub) => (
                           <Link
@@ -140,15 +151,15 @@ const Header: React.FC = () => {
                             style={{
                               padding: '10px 16px',
                               borderRadius: '8px',
-                              color: location.pathname === sub.path ? '#F43F5E' : '#475569',
+                              color: location.pathname === sub.path ? '#ff4d00' : '#475569',
                               fontSize: '0.9rem',
                               fontWeight: 500,
                               transition: 'all 0.2s ease',
                               textDecoration: 'none',
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.background = 'rgba(244, 63, 94, 0.05)';
-                              e.currentTarget.style.color = '#F43F5E';
+                              e.currentTarget.style.background = 'rgba(255, 77, 0, 0.05)';
+                              e.currentTarget.style.color = '#ff4d00';
                             }}
                             onMouseLeave={(e) => {
                               if (location.pathname !== sub.path) {
@@ -283,7 +294,7 @@ const Header: React.FC = () => {
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                       {location.pathname === link.path && !link.submenu && (
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F43F5E' }} />
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ff4d00' }} />
                       )}
                       {link.submenu ? (
                         <span
@@ -345,7 +356,7 @@ const Header: React.FC = () => {
                               style={{
                                 fontSize: '1.25rem',
                                 fontWeight: 600,
-                                color: location.pathname === sub.path ? '#F43F5E' : '#64748b',
+                                color: location.pathname === sub.path ? '#ff4d00' : '#64748b',
                                 textDecoration: 'none',
                                 fontFamily: 'Outfit, sans-serif',
                               }}

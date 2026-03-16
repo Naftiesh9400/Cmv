@@ -38,7 +38,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" style={{ padding: '100px 0', background: '#f8fafc', overflow: 'hidden' }}>
+    <section id="projects" style={{ padding: '60px 0', background: '#f8fafc', overflow: 'hidden' }}>
       <div className="container" style={{ position: 'relative' }}>
         
         {/* --- Header --- */}
@@ -65,8 +65,8 @@ const ProjectsSection = () => {
           </motion.div>
           
           <h2 style={{ 
-            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
-            fontWeight: 900, 
+            fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)', 
+            fontWeight: 800, 
             color: '#0f172a', 
             margin: '0 0 16px',
             lineHeight: 1.1,
@@ -187,15 +187,17 @@ const ProjectsSection = () => {
                       position: 'absolute', 
                       bottom: '20px', 
                       left: '20px', 
-                      background: 'rgba(15, 23, 42, 0.8)', 
+                      background: 'rgba(255, 255, 255, 0.95)', 
                       backdropFilter: 'blur(4px)',
-                      color: '#fff', 
+                      color: '#ff4d00', 
                       padding: '6px 14px', 
                       borderRadius: '8px', 
                       fontSize: '0.75rem', 
                       fontWeight: 700,
                       textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
+                      letterSpacing: '0.05em',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                      border: '1px solid rgba(255, 77, 0, 0.2)'
                     }}>
                       {project.category}
                     </div>

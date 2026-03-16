@@ -1,153 +1,158 @@
+import { useEffect } from 'react';
 import Logo from '../assets/qwq 2.png';
 import { Link } from 'react-router-dom';
-import { Linkedin, Twitter, Facebook, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Linkedin, Twitter, Facebook, Instagram, MapPin, Mail, Phone } from 'lucide-react';
 
-const quickLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Services', path: '/service' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contact Us', path: '/contact' }
+const navColumns = [
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About CMV Technologies', path: '/about-us' },
+      { label: 'Our Leadership Team', path: '/leadership' },
+      { label: 'Our Clients', path: '/our-clients' },
+      { label: 'Partner With Us', path: '/our-partners' },
+      { label: 'Success Stories', path: '/case-study' },
+      { label: 'Blog & Insights', path: '/blog' },
+    ],
+  },
+  {
+    heading: 'Services',
+    links: [
+      { label: 'IT Consulting', path: '/services/it-consulting' },
+      { label: 'Cybersecurity Solutions', path: '/services/cybersecurity' },
+      { label: 'Cloud Migration', path: '/services/cloud-migration' },
+      { label: 'Web & App Development', path: '/services/web-development' },
+      { label: 'Managed IT Support', path: '/services/managed-it' },
+      { label: 'Digital Transformation', path: '/services/digital-transformation' },
+    ],
+  },
+  {
+    heading: 'Legal',
+    links: [
+      { label: 'Privacy Policy', path: '/privacy-policy' },
+      { label: 'Terms of Service', path: '/terms-of-service' },
+      { label: 'Cookie Policy', path: '/cookie-policy' },
+      { label: 'Disclaimer', path: '/disclaimer' },
+    ],
+  },
 ];
 
-const Footer = () => {
-  return (
-    <footer style={{ background: '#fff', color: '#475569', paddingTop: '3rem', borderTop: '1px solid #f0f2f5' }}>
-      <div className="container">
-        
-        {/* Newsletter Section */}
-        <div 
-          style={{
-            background: '#ffffff',
-            border: '1px solid #f1f5f9',
-            padding: '1.5rem 2.5rem',
-            borderRadius: '1.25rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1.5rem',
-            marginBottom: '4rem',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-          className="newsletter-card"
-        >
-          {/* Subtle Decorative Icon for background */}
-          <Mail size={120} strokeWidth={0.5} style={{ position: 'absolute', right: '-20px', bottom: '-30px', color: 'rgba(255, 77, 0, 0.03)', transform: 'rotate(-15deg)', pointerEvents: 'none' }} />
-          
-          <div style={{ flex: '2 1 400px', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <div style={{ padding: '12px', background: 'rgba(255, 77, 0, 0.05)', borderRadius: '12px', color: '#ff4d00' }}>
-              <Mail size={24} />
-            </div>
-            <div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: '0 0 4px', fontFamily: 'Outfit, sans-serif' }}>
-                Subscribe to Our Newsletter
-              </h3>
-              <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem', opacity: 0.8 }}>
-                Stay updated with the latest in tech, cybersecurity, and our enterprise solutions.
-              </p>
-            </div>
-          </div>
-          <form 
-            style={{ 
-              flex: '1 1 350px', 
-              display: 'flex', 
-              gap: '10px',
-              flexWrap: 'wrap',
-              maxWidth: '500px'
-            }} 
-            onClick={(e) => e.preventDefault()}
-          >
-            <input 
-              type="email" 
-              placeholder="Enter your work email" 
-              required
-              style={{
-                flex: '1 1 200px',
-                padding: '12px 18px',
-                borderRadius: '9999px',
-                border: '1px solid #e2e8f0',
-                background: '#f8fafc',
-                color: '#0f172a',
-                outline: 'none',
-                fontSize: '0.9rem',
-                minWidth: '0'
-              }}
-              onFocus={(e) => (e.target.style.borderColor = '#ff4d00')}
-              onBlur={(e) => (e.target.style.borderColor = '#e2e8f0')}
-            />
-            <button
-              style={{
-                padding: '12px 28px',
-                borderRadius: '9999px',
-                border: 'none',
-                background: 'linear-gradient(135deg, #ff4d00 0%, #ff8c00 100%)',
-                color: '#fff',
-                fontSize: '0.9rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                whiteSpace: 'nowrap',
-                flex: '0 0 auto'
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+const socials = [
+  { icon: <Linkedin size={17} />, label: 'CMV Technologies on LinkedIn', href: 'https://linkedin.com', color: '#0A66C2' },
+  { icon: <Twitter size={17} />, label: 'CMV Technologies on Twitter/X', href: 'https://twitter.com', color: '#1DA1F2' },
+  { icon: <Facebook size={17} />, label: 'CMV Technologies on Facebook', href: 'https://facebook.com', color: '#1877F2' },
+  { icon: <Instagram size={17} />, label: 'CMV Technologies on Instagram', href: 'https://instagram.com', color: '#E4405F' },
+];
 
-        {/* Footer Top Grid */}
-        <div 
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '3rem',
-            paddingBottom: '4rem',
-            borderBottom: '1px solid #f0f2f5'
-          }}
-        >
-          {/* Column 1: Brand Info */}
-          <div>
-            <div style={{ marginBottom: '1.5rem' }}>
-              <img src={Logo} alt="CMV Technologies" style={{ height: '44px', width: 'auto', objectFit: 'contain' }} />
-            </div>
-            <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-              CMV Technologies transforms businesses with smart, secure, and scalable IT solutions. Your reliable global technology partner.
+const linkStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '5px',
+  color: '#64748b',
+  textDecoration: 'none',
+  fontSize: '0.875rem',
+  lineHeight: 1.5,
+  transition: 'color 0.2s ease',
+  fontWeight: 500,
+};
+
+const Footer = () => {
+  // Inject JSON-LD Organization schema for SEO
+  useEffect(() => {
+    const id = 'cmv-org-schema';
+    if (!document.getElementById(id)) {
+      const script = document.createElement('script');
+      script.id = id;
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'CMV Technologies International Pvt. Ltd.',
+        url: 'https://cmv-global.com',
+        logo: 'https://cmv-global.com/logo.png',
+        description:
+          'CMV Technologies provides enterprise IT consulting, cybersecurity, cloud migration, web development, and managed IT services globally.',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'B517, 5th Floor, B Tower, Bhutani Alphathum, Sector 90',
+          addressLocality: 'Noida',
+          addressRegion: 'Uttar Pradesh',
+          postalCode: '201304',
+          addressCountry: 'IN',
+        },
+        contactPoint: [
+          { '@type': 'ContactPoint', telephone: '+1-555-123-4567', contactType: 'customer service', availableLanguage: 'English' },
+          { '@type': 'ContactPoint', email: 'help@cmv-global.com', contactType: 'sales' },
+        ],
+        sameAs: [
+          'https://linkedin.com/company/cmv-technologies',
+          'https://twitter.com/cmvtechnologies',
+          'https://facebook.com/cmvtechnologies',
+          'https://instagram.com/cmvtechnologies',
+        ],
+      });
+      document.head.appendChild(script);
+    }
+  }, []);
+
+  return (
+    <footer
+      aria-label="CMV Technologies site footer"
+      itemScope
+      itemType="https://schema.org/WPFooter"
+      style={{ background: '#fff', color: '#475569', borderTop: '1px solid #f0f2f5' }}
+    >
+      <div className="container">
+
+        {/* ── Main Grid ── */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '2.5rem 3rem',
+          padding: '3rem 0 2.5rem',
+          borderBottom: '1px solid #f0f2f5',
+        }}>
+
+          {/* Col 1 — Brand */}
+          <div style={{ gridColumn: 'span 1' }}>
+            <Link to="/" aria-label="CMV Technologies — Go to homepage" style={{ display: 'inline-block', marginBottom: '1rem' }}>
+              <img
+                src={Logo}
+                alt="CMV Technologies International Pvt. Ltd. — IT Consulting & Cybersecurity"
+                width={140}
+                height={44}
+                style={{ height: '44px', width: 'auto', objectFit: 'contain' }}
+              />
+            </Link>
+
+            <p style={{ color: '#64748b', lineHeight: 1.75, fontSize: '0.875rem', margin: '0 0 1.25rem', maxWidth: '280px' }}>
+              Transforming businesses with smart, secure &amp; scalable IT solutions — your trusted global technology partner since 2015.
             </p>
-            {/* Social Icons */}
-            <div style={{ display: 'flex', gap: '12px' }}>
-              {[
-                { icon: <Linkedin size={18} />, name: 'LinkedIn', color: '#0A66C2' },
-                { icon: <Twitter size={18} />, name: 'Twitter', color: '#1DA1F2' },
-                { icon: <Facebook size={18} />, name: 'Facebook', color: '#1877F2' },
-                { icon: <Instagram size={18} />, name: 'Instagram', color: '#E4405F' }
-              ].map((social, idx) => (
-                <div 
-                  key={idx}
+
+            {/* Socials */}
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }} aria-label="CMV Technologies social media profiles">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  title={s.label}
+                  rel="noopener noreferrer nofollow"
+                  target="_blank"
                   style={{
-                    width: '38px',
-                    height: '38px',
-                    borderRadius: '50%',
-                    background: '#f8fafc',
-                    border: '1px solid #e2e8f0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    color: '#475569',
-                    transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                    width: '36px', height: '36px', borderRadius: '50%',
+                    background: '#f8fafc', border: '1px solid #e2e8f0',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: '#475569', textDecoration: 'none',
+                    transition: 'all 0.3s cubic-bezier(0.175,0.885,0.32,1.275)',
+                    flexShrink: 0,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = social.color;
+                    e.currentTarget.style.background = s.color;
                     e.currentTarget.style.color = '#fff';
                     e.currentTarget.style.borderColor = 'transparent';
-                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.1)';
-                    e.currentTarget.style.boxShadow = `0 10px 20px -5px ${social.color}66`;
+                    e.currentTarget.style.transform = 'translateY(-3px) scale(1.1)';
+                    e.currentTarget.style.boxShadow = `0 8px 18px -4px ${s.color}55`;
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = '#f8fafc';
@@ -157,107 +162,117 @@ const Footer = () => {
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  {social.icon}
-                </div>
+                  {s.icon}
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div>
-            <h4 style={{ color: '#0f172a', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 1.5rem', fontFamily: 'Outfit, sans-serif' }}>Quick Links</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link to={link.path} style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Nav Columns */}
+          {navColumns.map((col) => (
+            <nav key={col.heading} aria-label={`${col.heading} navigation`}>
+              <h3 style={{
+                fontSize: '0.8rem', fontWeight: 800, color: '#0f172a',
+                textTransform: 'uppercase', letterSpacing: '0.09em',
+                margin: '0 0 1.1rem', fontFamily: 'Outfit, sans-serif',
+              }}>
+                {col.heading}
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.path}
+                      title={link.label}
+                      style={linkStyle}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#ff4d00';
+                        e.currentTarget.style.paddingLeft = '4px';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = '#64748b';
+                        e.currentTarget.style.paddingLeft = '0';
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
 
-          {/* Column 3: Legal */}
-          <div>
-            <h4 style={{ color: '#0f172a', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 1.5rem', fontFamily: 'Outfit, sans-serif' }}>Legal</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Disclaimer'].map((link) => (
-                <li key={link}>
-                  <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Contact info */}
-          <div>
-            <h4 style={{ color: '#0f172a', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 1.5rem', fontFamily: 'Outfit, sans-serif' }}>Contact Us</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 77, 0, 0.05)',
-                  color: '#ff4d00',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <MapPin size={18} />
-                </div>
-                <span style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: 1.5 }}>
-                  B517, 5th Floor, B Tower, <br/>
-                  Bhutani Alphathum, Sector 90, <br/>
-                  Noida, Uttar Pradesh 201304
+          {/* Contact col */}
+          <address
+            itemScope
+            itemType="https://schema.org/LocalBusiness"
+            style={{ fontStyle: 'normal' }}
+            aria-label="CMV Technologies contact information"
+          >
+            <h3 style={{
+              fontSize: '0.8rem', fontWeight: 800, color: '#0f172a',
+              textTransform: 'uppercase', letterSpacing: '0.09em',
+              margin: '0 0 1.1rem', fontFamily: 'Outfit, sans-serif',
+            }}>
+              Contact
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <MapPin size={16} style={{ color: '#ff4d00', marginTop: '2px', flexShrink: 0 }} aria-hidden="true" />
+                <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"
+                  style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                  <span itemProp="streetAddress">B517, 5th Floor, B Tower,<br />Bhutani Alphathum, Sector 90,</span><br />
+                  <span itemProp="addressLocality">Noida</span>,{' '}
+                  <span itemProp="addressRegion">UP</span>{' '}
+                  <span itemProp="postalCode">201304</span>,{' '}
+                  <span itemProp="addressCountry">India</span>
                 </span>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 77, 0, 0.05)',
-                  color: '#ff4d00',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <Mail size={18} />
-                </div>
-                <a href="mailto:help@cmv-global.com" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Mail size={15} style={{ color: '#ff4d00', flexShrink: 0 }} aria-hidden="true" />
+                <a
+                  href="mailto:help@cmv-global.com"
+                  title="Email CMV Technologies"
+                  itemProp="email"
+                  style={linkStyle}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#ff4d00')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
+                >
                   help@cmv-global.com
                 </a>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 77, 0, 0.05)',
-                  color: '#ff4d00',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0
-                }}>
-                  <Phone size={18} />
-                </div>
-                <a href="tel:+15551234567" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#ff4d00'} onMouseLeave={e => e.currentTarget.style.color = '#64748b'}>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Phone size={15} style={{ color: '#ff4d00', flexShrink: 0 }} aria-hidden="true" />
+                <a
+                  href="tel:+15551234567"
+                  title="Call CMV Technologies"
+                  itemProp="telephone"
+                  style={linkStyle}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#ff4d00')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
+                >
                   +1 (555) 123-4567
                 </a>
               </li>
+
+
             </ul>
-          </div>
+          </address>
         </div>
 
-        {/* Footer Bottom */}
-        <div style={{ padding: '1.5rem 0', textAlign: 'center', color: '#94a3b8', fontSize: '0.85rem' }}>
-          <p style={{ margin: 0 }}>© {new Date().getFullYear()} CMV Technologies International Pvt Ltd. All rights reserved.</p>
+        {/* ── Bottom Bar ── */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center',
+          justifyContent: 'space-between', gap: '0.75rem',
+          padding: '1.25rem 0',
+          fontSize: '0.8rem', color: '#94a3b8',
+        }}>
+          <p style={{ margin: 0 }}>
+            © {new Date().getFullYear()}{' '}
+            <strong style={{ color: '#64748b', fontWeight: 600 }}>CMV Technologies International Pvt. Ltd.</strong>
+            {' '}All rights reserved.
+          </p>
+
         </div>
       </div>
     </footer>

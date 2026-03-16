@@ -7,7 +7,6 @@ import ProjectsSection from '../components/ProjectsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import BlogSection from '../components/BlogSection';
 import FAQSection from '../components/FAQSection';
-import ContactSection from '../components/ContactSection';
 
 const Home = () => {
   return (
@@ -21,7 +20,6 @@ const Home = () => {
       <TestimonialsSection />
       <BlogSection />
       <FAQSection />
-      <ContactSection showContactInfo={false} showMap={false} />
     </>
   );
 };

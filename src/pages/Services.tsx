@@ -1,11 +1,9 @@
 import ServicesSection from '../components/ServicesSection';
-import ContactSection from '../components/ContactSection';
 
 const Services = () => {
   return (
-    <div style={{ paddingTop: '2rem' }}>
+    <div className="py-20 lg:py-28">
       <ServicesSection />
-      <ContactSection />
     </div>
   );
 };

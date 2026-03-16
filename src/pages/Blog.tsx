@@ -1,11 +1,9 @@
 import BlogSection from '../components/BlogSection';
-import ContactSection from '../components/ContactSection';
 
 const Blog = () => {
   return (
-    <div style={{ paddingTop: '2rem' }}>
+    <div style={{ paddingTop: '8rem', paddingBottom: '5rem' }}>
       <BlogSection showViewAll={false} />
-      <ContactSection />
     </div>
   );
 };

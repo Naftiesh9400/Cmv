@@ -7,8 +7,17 @@ import {
   Infinity, 
   Smartphone, 
   Layers, 
-  ShieldCheck 
+  ShieldCheck,
+  Cloud,
+  Palette
 } from 'lucide-react';
+
+// Import local logos where available
+import logoDocker from '../assets/logo/Company=Docker.png';
+import logoFigma from '../assets/logo/Company=Figma.png';
+import logoGoogle from '../assets/logo/Company=Google.png';
+import logoMicrosoft from '../assets/logo/Company=Microsoft.png';
+import logoAdobe from '../assets/logo/Adobe.png';
 
 const techCategories = [
   {
@@ -16,15 +25,15 @@ const techCategories = [
     title: 'AI/ML',
     icon: <BrainCircuit size={28} />,
     techs: [
-      { name: 'Big ML', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVgEicwFvI5Oid_YfO2oVay5W99Uf6o5mEjQ&s' },
-      { name: 'Hugging Face', logo: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg' },
-      { name: 'Mahout', logo: 'https://mahout.apache.org/assets/img/mahout-logo-brighter.png' },
-      { name: 'ML Flow', logo: 'https://mlflow.org/img/MLflow-logo-final-black.png' },
-      { name: 'NLTK', logo: 'https://www.nltk.org/_static/nltk_logo.png' },
-      { name: 'OpenCV', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/32/OpenCV_Logo_with_text_svg_version.svg' },
-      { name: 'PyTorch', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg' },
-      { name: 'Spark', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg' },
-      { name: 'TensorFlow', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg' }
+      { name: 'Big ML', logo: 'https://www.vectorlogo.zone/logos/bigml/bigml-icon.svg' },
+      { name: 'Hugging Face', logo: 'https://www.vectorlogo.zone/logos/huggingface/huggingface-icon.svg' },
+      { name: 'Mahout', logo: 'https://www.apache.org/logos/res/mahout/mahout.png' },
+      { name: 'ML Flow', logo: 'https://www.vectorlogo.zone/logos/mlflow/mlflow-icon.svg' },
+      { name: 'NLTK', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/NLTK_logo.png' },
+      { name: 'OpenCV', logo: 'https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg' },
+      { name: 'PyTorch', logo: 'https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg' },
+      { name: 'Spark', logo: 'https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg' },
+      { name: 'TensorFlow', logo: 'https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg' }
     ]
   },
   {
@@ -32,10 +41,10 @@ const techCategories = [
     title: 'Data Engineering',
     icon: <Database size={28} />,
     techs: [
-      { name: 'Apache Kafka', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/Apache_kafka_logo.svg' },
-      { name: 'Hadoop', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Hadoop_logo.svg' },
-      { name: 'Airflow', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/de/AirflowLogo.png' },
-      { name: 'Snowflake', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Snowflake_Logo.svg' },
+      { name: 'Apache Kafka', logo: 'https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-icon.svg' },
+      { name: 'Hadoop', logo: 'https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-icon.svg' },
+      { name: 'Airflow', logo: 'https://www.vectorlogo.zone/logos/apache_airflow/apache_airflow-icon.svg' },
+      { name: 'Snowflake', logo: 'https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg' },
       { name: 'Databricks', logo: 'https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg' }
     ]
   },
@@ -45,9 +54,9 @@ const techCategories = [
     icon: <BarChart3 size={28} />,
     techs: [
       { name: 'Tableau', logo: 'https://www.vectorlogo.zone/logos/tableau/tableau-icon.svg' },
-      { name: 'Power BI', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Power_bi_logo_black.svg' },
+      { name: 'Power BI', logo: 'https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg' },
       { name: 'Looker', logo: 'https://www.vectorlogo.zone/logos/google_looker/google_looker-icon.svg' },
-      { name: 'Grafana', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Grafana_logo.svg' }
+      { name: 'Grafana', logo: 'https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg' }
     ]
   },
   {
@@ -55,11 +64,11 @@ const techCategories = [
     title: 'DevOps',
     icon: <Infinity size={28} />,
     techs: [
-      { name: 'Docker', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_logo.svg' },
-      { name: 'Kubernetes', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg' },
+      { name: 'Docker', logo: logoDocker },
+      { name: 'Kubernetes', logo: 'https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg' },
       { name: 'Terraform', logo: 'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg' },
-      { name: 'Jenkins', logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Jenkins_logo.svg' },
-      { name: 'AWS', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' }
+      { name: 'Jenkins', logo: 'https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg' },
+      { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg' }
     ]
   },
   {
@@ -94,6 +103,26 @@ const techCategories = [
       { name: 'Jest', logo: 'https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg' },
       { name: 'Appium', logo: 'https://v1.appium.io/img/appium-logo-1.png' }
     ]
+  },
+  {
+    id: 'cloud',
+    title: 'Cloud',
+    icon: <Cloud size={28} />,
+    techs: [
+      { name: 'Google Cloud', logo: logoGoogle },
+      { name: 'Microsoft Azure', logo: logoMicrosoft },
+      { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg' }
+    ]
+  },
+  {
+    id: 'design',
+    title: 'Design',
+    icon: <Palette size={28} />,
+    techs: [
+      { name: 'Figma', logo: logoFigma },
+      { name: 'Adobe', logo: logoAdobe },
+      { name: 'Dribbble', logo: 'https://www.vectorlogo.zone/logos/dribbble/dribbble-icon.svg' }
+    ]
   }
 ];
 
@@ -103,12 +132,12 @@ const TechSection = () => {
   const activeCategory = techCategories.find(cat => cat.id === activeTab);
 
   return (
-    <section style={{ padding: '4rem 0', background: '#fff', overflow: 'hidden' }}>
+    <section style={{ padding: '2.5rem 0', background: '#fff', overflow: 'hidden' }}>
       <div className="container">
         {/* Title */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 style={{ 
-            fontSize: 'clamp(2rem, 4vw, 2.75rem)', 
+            fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)', 
             fontWeight: 800, 
             color: '#0f172a', 
             fontFamily: 'Outfit, sans-serif',
@@ -203,11 +232,11 @@ const TechSection = () => {
                         maxWidth: '100%', 
                         maxHeight: '100%', 
                         objectFit: 'contain',
-                        filter: 'grayscale(1) opacity(0.8)',
-                        transition: 'filter 0.3s ease'
+                        filter: 'none', // Changed from grayscale for better visibility
+                        transition: 'transform 0.3s ease'
                       }}
-                      onMouseEnter={(e) => e.currentTarget.style.filter = 'grayscale(0) opacity(1)'}
-                      onMouseLeave={(e) => e.currentTarget.style.filter = 'grayscale(1) opacity(0.8)'}
+                      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                     />
                   </div>
                   <span style={{ 

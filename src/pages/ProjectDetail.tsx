@@ -29,7 +29,7 @@ const ProjectDetail = () => {
   }
 
   return (
-    <article style={{ background: '#fff', paddingTop: '80px' }}>
+    <article style={{ background: '#fff', paddingTop: '120px' }}>
       {/* Progress Bar */}
       <motion.div
         style={{

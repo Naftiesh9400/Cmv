@@ -17,6 +17,11 @@ import logoMicrosoft from '../assets/logo/Company=Microsoft.png';
 import logoPayPal from '../assets/logo/Company=PayPal.png';
 import logoSlack from '../assets/logo/Company=Slack.png';
 import logoZoom from '../assets/logo/Company=Zoom.png';
+import logoPostman from '../assets/logo/Company=Postman.png';
+import logoSlack2 from '../assets/logo/Company=Slack.png';
+import logoDiscord2 from '../assets/logo/Company=Discord.png';
+import logoDropbox2 from '../assets/logo/Company=Dropbox.png';
+import logoDocker2 from '../assets/logo/Company=Docker.png';
 
 const row1 = [
   { name: 'Adobe', logo: logoAdobe },
@@ -26,6 +31,8 @@ const row1 = [
   { name: 'Atlassian', logo: logoAtlassian },
   { name: 'Booking.com', logo: logoBooking },
   { name: 'Canva', logo: logoCanva },
+  { name: 'Postman', logo: logoPostman },
+  { name: 'Slack', logo: logoSlack2 },
 ];
 
 const row2 = [
@@ -38,6 +45,9 @@ const row2 = [
   { name: 'PayPal', logo: logoPayPal },
   { name: 'Slack', logo: logoSlack },
   { name: 'Zoom', logo: logoZoom },
+  { name: 'Discord', logo: logoDiscord2 },
+  { name: 'Dropbox', logo: logoDropbox2 },
+  { name: 'Docker', logo: logoDocker2 },
 ];
 
 const LogoSlider = () => {

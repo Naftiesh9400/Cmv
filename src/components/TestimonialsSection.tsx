@@ -59,7 +59,7 @@ const TestimonialsSection = () => {
   return (
     <section
       style={{
-        padding: '3rem 0',
+        padding: '2rem 0',
         background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
         overflow: 'hidden',
       }}
@@ -98,7 +98,7 @@ const TestimonialsSection = () => {
           </div>
           <h2
             style={{
-              fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+              fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)',
               fontWeight: 800,
               color: '#0f172a',
               fontFamily: 'Outfit, sans-serif',

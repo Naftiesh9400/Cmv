@@ -29,7 +29,7 @@ const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" style={{ padding: '3.5rem 0', background: '#fff' }}>
+    <section id="faq" style={{ padding: '2rem 0', background: '#fff' }}>
       <div className="container" style={{ maxWidth: '900px' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
@@ -55,7 +55,7 @@ const FAQSection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             style={{ 
-              fontSize: 'clamp(2.25rem, 4vw, 3rem)', 
+              fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)', 
               fontWeight: 800, 
               color: '#0f172a', 
               fontFamily: 'Outfit, sans-serif',

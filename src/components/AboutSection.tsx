@@ -22,7 +22,7 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="about" style={{ padding: '3.5rem 0', background: '#fff', overflow: 'hidden' }}>
+    <section id="about" style={{ padding: '2rem 0', background: '#fff', overflow: 'hidden' }}>
       <div className="container">
         <div className="responsive-grid-2" style={{ alignItems: 'flex-start', gap: '4rem' }}>
           
@@ -76,7 +76,7 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
               </span>
               <h2
                 style={{
-                  fontSize: 'clamp(2.25rem, 4vw, 3.25rem)',
+                  fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)',
                   fontWeight: 800,
                   color: '#0f172a',
                   lineHeight: 1.1,
@@ -85,7 +85,16 @@ const AboutSection = ({ showViewAll = true }: { showViewAll?: boolean }) => {
                 }}
               >
                 Built on Trust,<br />
-                Driven by Results
+                <span style={{
+                  backgroundImage: 'linear-gradient(90deg, #ff4d00 0%, #ff8c00 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: 'transparent',
+                  display: 'inline-block',
+                }}>
+                  Driven by Results
+                </span>
               </h2>
             </div>
 
