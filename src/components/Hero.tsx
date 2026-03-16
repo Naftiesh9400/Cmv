@@ -39,20 +39,20 @@ const Hero: React.FC = () => {
 
   return (
     <section
-      className="py-12 md:py-32 overflow-hidden min-h-[85vh] flex items-center"
+      className="py-20 md:py-32 overflow-hidden min-h-[85vh] flex items-center"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="container flex flex-col md:grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="container grid md:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="z-20 text-center md:text-left flex flex-col items-center md:items-start"
+          className="z-20"
         >
           <motion.h1
-            className="text-4xl sm:text-6xl lg:text-[5.5rem] font-bold font-outfit leading-[1.05] mb-6 md:mb-8 text-navy tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-[5.5rem] font-bold font-outfit leading-[1.05] mb-8 text-navy tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-slate-500 mb-8 md:mb-10 max-w-[600px] leading-[1.7]"
+            className="text-base sm:text-lg md:text-xl text-slate-500 mb-10 max-w-[600px] leading-[1.7]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-row items-center justify-center md:justify-start"
+            className="flex flex-row items-center justify-start"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="relative w-full flex justify-center md:justify-end items-center hero-image-wrapper mt-10 md:mt-0"
+          className="relative w-full hidden md:flex justify-center md:justify-end items-center hero-image-wrapper"
           initial={{ opacity: 0, scale: 0.95, x: 50 }}
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
 
 
           <motion.div
-            className="relative w-full max-w-[500px] md:max-w-[700px] md:translate-x-12"
+            className="relative w-full max-w-[700px] md:translate-x-12"
             style={{
               rotateX,
               rotateY,
@@ -126,11 +126,17 @@ const Hero: React.FC = () => {
       <style>{`
         @media (max-width: 767px) {
           .hero-image-wrapper {
-            margin-top: 3rem;
+            display: none !important;
+          }
+        }
+        @media (min-width: 768px) {
+          .hero-image-wrapper {
+            display: flex !important;
           }
         }
       `}</style>
     </section>
+
 
   );
 };

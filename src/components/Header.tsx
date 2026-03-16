@@ -66,12 +66,12 @@ const Header: React.FC = () => {
           padding: '1rem 0',
           transition: 'background 0.3s ease, box-shadow 0.3s ease',
           background: scrolled
-            ? 'rgba(255, 255, 255, 0.95)'
-            : 'rgba(255, 255, 255, 0.85)',
-          backdropFilter: 'blur(14px)',
-          WebkitBackdropFilter: 'blur(14px)',
-          borderBottom: scrolled ? '1px solid rgba(229,231,235,0.6)' : '1px solid transparent',
-          boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.06)' : 'none',
+            ? 'rgba(255, 255, 255, 1)'
+            : 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: scrolled ? '1px solid rgba(229,231,235,0.8)' : '1px solid transparent',
+          boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.08)' : 'none',
         }}
       >
         <div className="container flex items-center justify-between">
